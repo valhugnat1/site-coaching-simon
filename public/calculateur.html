@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glow-up Calculator · Simon</title>
+<meta name="description" content="Calcule ton glow-up avec Simon, coach sportif à Strasbourg : séances, durée, offre conseillée… et dates Grindr estimées.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#1a0633; --night-2:#2a0b52; --night-3:#3a1170; --ink:#fff6fd; --mute:#d7c4f0;
+  --pink:#ff3ea5; --hot:#ff007a; --lime:#c6ff3d; --cyan:#3df2ff; --sun:#ffd23f; --violet:#8f5bff;
+  --rainbow:linear-gradient(90deg,#ff3b3b,#ff9f1c,#ffe93d,#3ddc84,#3db8ff,#a35bff,#ff3ea5);
+  --chrome:linear-gradient(180deg,#fff 0%,#ffd6f0 35%,#ff7ac6 50%,#fff 52%,#c9a6ff 100%);
+  --disp:'Bungee',Impact,sans-serif; --script:'Pacifico',cursive; --body:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;overflow-x:hidden;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='24' font-size='24'%3E%F0%9F%8F%8B%EF%B8%8F%3C/text%3E%3C/svg%3E") 4 4,auto}
+::selection{background:var(--pink);color:#fff}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.rb{height:8px;background:var(--rainbow)}
+.sparkles{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:
+  radial-gradient(2px 2px at 10% 20%,#fff,transparent),radial-gradient(2px 2px at 80% 30%,#ffd6f0,transparent),
+  radial-gradient(1.5px 1.5px at 30% 70%,#fff,transparent),radial-gradient(2px 2px at 60% 85%,#c9a6ff,transparent),
+  radial-gradient(1.5px 1.5px at 90% 60%,#fff,transparent);animation:tw 3s ease-in-out infinite alternate;opacity:.7}
+@keyframes tw{to{opacity:.25}}
+nav,main,footer{position:relative;z-index:1}
+.chrome{background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 var(--hot)) drop-shadow(0 0 18px rgba(255,62,165,.55))}
+.script{font-family:var(--script);color:var(--pink);font-weight:400;text-transform:none}
+
+nav{padding:16px 0}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-family:var(--script);font-size:28px;text-decoration:none;color:var(--pink);text-shadow:0 0 14px rgba(255,62,165,.8)}
+.logo small{font-family:var(--disp);font-size:12px;color:var(--lime);margin-left:6px;text-shadow:none}
+.back{text-decoration:none;font-weight:600;color:var(--mute);border:2px solid var(--violet);border-radius:999px;padding:7px 14px;font-size:14px}
+.back:hover{color:var(--lime);border-color:var(--lime)}
+
+header.hero{padding:30px 0 40px;text-align:center}
+header h1{font-family:var(--disp);font-weight:400;font-size:clamp(40px,7vw,92px);line-height:.95;text-transform:uppercase}
+header h1 .script{display:block;font-size:.5em;line-height:1.4;margin-top:8px;transform:rotate(-3deg)}
+header p{color:var(--mute);font-size:19px;max-width:620px;margin:18px auto 0}
+
+/* layout */
+.calc{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:start;padding-bottom:80px}
+.panel{background:var(--night-2);border:3px solid var(--violet);border-radius:30px;padding:28px}
+.panel h2{font-family:var(--disp);font-weight:400;font-size:22px;margin-bottom:4px}
+.panel .hint{color:var(--mute);font-size:14px;margin-bottom:20px}
+.step{font-family:var(--disp);font-size:12px;color:var(--cyan);margin:22px 0 10px;display:block}
+.step:first-of-type{margin-top:0}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-bottom:6px}
+.f .in{display:flex;align-items:center;background:var(--night);border:2px solid var(--night-3);border-radius:14px;padding:0 12px;transition:border-color .2s}
+.f .in:focus-within{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,62,165,.25)}
+.f input{flex:1;min-width:0;background:none;border:0;color:var(--ink);font:800 20px var(--body);padding:10px 0;outline:none}
+.f .u{color:var(--mute);font-weight:600;font-size:14px}
+.goals{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.goal{position:relative}
+.goal input{position:absolute;opacity:0;pointer-events:none}
+.goal label{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:18px;background:var(--night);border:2px solid var(--night-3);cursor:inherit;transition:all .15s;height:100%}
+.goal label b{font-size:16px}
+.goal label span{font-size:13px;color:var(--mute)}
+.goal label i{font-style:normal;font-size:22px}
+.goal input:checked+label{border-color:var(--pink);background:linear-gradient(160deg,rgba(255,62,165,.25),rgba(143,91,255,.2));box-shadow:0 0 18px rgba(255,62,165,.4)}
+.goal input:focus-visible+label{outline:3px solid var(--cyan)}
+.range{margin-top:6px}
+.range .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.range .top b{font-family:var(--disp);font-weight:400;font-size:26px;color:var(--lime)}
+.range .top span{font-size:14px;color:var(--mute)}
+input[type=range]{width:100%;accent-color:var(--pink);margin-top:8px;height:28px;cursor:inherit}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{padding:8px 14px;border-radius:999px;border:2px solid var(--night-3);background:var(--night);font-weight:600;font-size:14px;cursor:inherit}
+.seg input:checked+label{border-color:var(--lime);color:var(--night);background:var(--lime)}
+.seg input:focus-visible+label{outline:3px solid var(--cyan)}
+.warn{margin-top:12px;background:rgba(255,210,63,.12);border:2px solid var(--sun);color:var(--sun);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600;display:none}
+.warn.on{display:block}
+
+/* results */
+.res{position:sticky;top:16px;display:grid;gap:16px}
+.verdict{background:linear-gradient(160deg,var(--pink),var(--violet));border-radius:30px;padding:26px;border:3px solid #fff;box-shadow:0 0 40px rgba(255,62,165,.5);display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center}
+.verdict .av{width:96px;height:96px;border-radius:50%;overflow:hidden;background:var(--night);border:3px solid #fff}
+.verdict .av img{width:120%;max-width:none;margin-left:-10%;margin-top:4%}
+.verdict small{font-family:var(--disp);font-size:12px;color:var(--lime)}
+.verdict p{font-size:19px;font-weight:600;line-height:1.35;margin-top:4px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.kpi{background:var(--night-2);border:2px solid rgba(255,255,255,.12);border-radius:24px;padding:18px 20px;position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;inset:auto 0 0 0;height:5px;background:var(--rainbow)}
+.kpi .l{font-size:13px;font-weight:600;color:var(--mute)}
+.kpi .v{font-family:var(--disp);font-size:clamp(34px,4vw,46px);line-height:1.05;color:var(--lime)}
+.kpi .s{font-size:13px;color:var(--mute)}
+.offer{background:#fff;color:var(--night);border-radius:24px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 8px 0 var(--pink)}
+.offer .l{font-family:var(--disp);font-size:12px;color:var(--hot)}
+.offer h3{font-family:var(--disp);font-weight:400;font-size:26px;line-height:1.1}
+.offer p{font-size:14px;color:#5a3f7a}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-size:14px;text-decoration:none;padding:12px 18px;border-radius:999px;background:var(--pink);color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px var(--hot);white-space:nowrap}
+.grindr{background:var(--night-2);border:3px solid var(--sun);border-radius:28px;padding:22px;position:relative;overflow:hidden}
+.grindr .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.grindr .l{font-family:var(--disp);font-size:13px;color:var(--sun)}
+.grindr .big{font-family:var(--disp);font-size:clamp(56px,8vw,84px);line-height:1;color:var(--sun);text-shadow:0 0 24px rgba(255,210,63,.5)}
+.grindr .tier{font-family:var(--script);color:var(--pink);font-size:22px}
+.grindr ul{list-style:none;margin-top:12px;display:grid;gap:6px;font-size:15px}
+.grindr li{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed rgba(255,255,255,.15);padding-top:6px}
+.grindr li b{color:var(--lime);white-space:nowrap}
+.grindr li b.neg{color:#ff8a8a}
+.phone{position:absolute;right:18px;top:18px;font-size:34px}
+.phone.buzz{animation:buzz .08s linear 10}
+@keyframes buzz{50%{transform:rotate(12deg)}}
+.bars{background:var(--night-2);border-radius:24px;padding:20px 22px;border:2px solid rgba(255,255,255,.12)}
+.bars h4{font-family:var(--disp);font-weight:400;font-size:15px;margin-bottom:12px}
+.bar{margin-bottom:12px}
+.bar:last-child{margin-bottom:0}
+.bar .t{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+.bar .t span{color:var(--mute);font-weight:400}
+.bar .track{height:12px;border-radius:999px;background:var(--night);margin-top:6px;overflow:hidden}
+.bar .fill{height:100%;border-radius:999px;background:var(--rainbow);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.fun{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fun div{background:var(--night);border:2px solid var(--night-3);border-radius:18px;padding:12px;text-align:center}
+.fun b{display:block;font-family:var(--disp);font-weight:400;font-size:24px;color:var(--cyan)}
+.fun span{font-size:12px;color:var(--mute)}
+.disclaimer{font-size:13px;color:var(--mute);text-align:center;max-width:720px;margin:0 auto;padding:0 0 60px}
+footer{padding:0 0 40px;text-align:center;font-size:14px;color:var(--mute)}
+.fall{position:fixed;top:-60px;z-index:55;pointer-events:none;font-size:32px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){.sparkles,.phone.buzz{animation:none}}
+
+.jump{display:none}
+@media (max-width:920px){
+  .calc{grid-template-columns:1fr}
+  .res{position:static;scroll-margin-top:12px}
+  .jump{display:block;position:fixed;left:16px;right:16px;bottom:14px;z-index:40;text-align:center;font-family:var(--disp);font-size:14px;text-decoration:none;background:var(--pink);color:#fff;border:3px solid #fff;border-radius:999px;padding:12px;box-shadow:0 0 0 3px var(--hot),0 6px 24px rgba(0,0,0,.5);transition:opacity .2s}
+  .jump.hide{opacity:0;pointer-events:none}
+  footer{padding-bottom:90px}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .panel{padding:20px}
+  .fields,.goals{grid-template-columns:1fr 1fr}
+  .verdict{grid-template-columns:64px 1fr;padding:20px}
+  .verdict .av{width:64px;height:64px}
+  .verdict p{font-size:16px}
+  .fun{grid-template-columns:1fr 1fr 1fr}
+  .fun b{font-size:19px}
+}
+</style>
+</head>
+<body>
+<div class="sparkles"></div>
+<div class="rb"></div>
+
+<nav><div class="wrap">
+  <a class="logo" href="disco.html">Simon<small>DISCO GYM</small></a>
+  <a class="back" href="disco.html">← Retour au site</a>
+</div></nav>
+
+<main>
+<header class="hero"><div class="wrap">
+  <h1><span class="chrome">Glow-up</span><br><span class="chrome">Calculator</span><span class="script">la science exacte du canon</span></h1>
+  <p>Donne tes mensurations et ton objectif. L'algorithme (très sérieux, validé par personne) te dit combien de séances il te faut, quelle offre prendre… et combien de dates Grindr ça va te rapporter.</p>
+</div></header>
+
+<a class="jump" href="#res" id="jump">🔮 Voir mon résultat · <span id="jumpG">0</span> dates</a>
+<div class="wrap calc">
+  <!-- FORM -->
+  <form class="panel" id="form" onsubmit="return false">
+    <h2>Tes mensurations 📏</h2>
+    <p class="hint">Sois honnête. Le mètre ruban, lui, ne ment jamais.</p>
+
+    <span class="step">01 · Aujourd'hui</span>
+    <div class="fields">
+      <div class="f"><label for="h">Taille</label><div class="in"><input id="h" type="number" inputmode="decimal" value="178" min="140" max="220"><span class="u">cm</span></div></div>
+      <div class="f"><label for="w">Poids</label><div class="in"><input id="w" type="number" inputmode="decimal" value="70" min="40" max="200"><span class="u">kg</span></div></div>
+      <div class="f"><label for="arm">Tour de bras</label><div class="in"><input id="arm" type="number" inputmode="decimal" value="31" min="18" max="60"><span class="u">cm</span></div></div>
+      <div class="f"><label for="waist">Tour de taille</label><div class="in"><input id="waist" type="number" inputmode="decimal" value="84" min="55" max="160"><span class="u">cm</span></div></div>
+    </div>
+
+    <span class="step">02 · L'objectif</span>
+    <div class="goals" role="radiogroup" aria-label="Objectif">
+      <div class="goal"><input type="radio" name="goal" id="g1" value="masse" checked><label for="g1"><i>🍗</i><b>Prise de masse</b><span>Remplir enfin mes t-shirts</span></label></div>
+      <div class="goal"><input type="radio" name="goal" id="g2" value="seche"><label for="g2"><i>🔥</i><b>Perdre du ventre</b><span>Adieu la bouée, bonjour les abdos</span></label></div>
+      <div class="goal"><input type="radio" name="goal" id="g3" value="bras"><label for="g3"><i>💪</i><b>Gros bras</b><span>Des manches qui craquent</span></label></div>
+      <div class="goal"><input type="radio" name="goal" id="g4" value="pride"><label for="g4"><i>🌈</i><b>Canon pour la Pride</b><span>Le glow-up complet, torse nu sur le char</span></label></div>
+    </div>
+
+    <div class="range" id="targetBox">
+      <div class="top"><span id="targetLabel">Kilos de muscle à prendre</span><b id="targetVal">+5 kg</b></div>
+      <input type="range" id="target" min="1" max="15" step="0.5" value="5" aria-labelledby="targetLabel">
+    </div>
+    <div class="warn" id="warn"></div>
+
+    <span class="step">03 · Ton rythme</span>
+    <div class="range">
+      <div class="top"><span id="freqLabel">Séances par semaine</span><b id="freqVal">3</b></div>
+      <input type="range" id="freq" min="1" max="6" step="1" value="3" aria-labelledby="freqLabel">
+    </div>
+
+    <span class="step">04 · Ton niveau</span>
+    <div class="seg" role="radiogroup" aria-label="Niveau">
+      <input type="radio" name="lvl" id="l1" value="1" checked><label for="l1">🐣 Jamais soulevé que mon verre</label>
+      <input type="radio" name="lvl" id="l2" value="2"><label for="l2">🏋️ J'ai déjà une carte de salle</label>
+      <input type="radio" name="lvl" id="l3" value="3"><label for="l3">🦍 Je fais des selfies miroir</label>
+    </div>
+
+    <span class="step">05 · Ton rapport à l'apéro</span>
+    <div class="seg" role="radiogroup" aria-label="Apéro">
+      <input type="radio" name="apero" id="a1" value="0"><label for="a1">🥤 Shaker only</label>
+      <input type="radio" name="apero" id="a2" value="1" checked><label for="a2">🍷 Un verre de temps en temps</label>
+      <input type="radio" name="apero" id="a3" value="2"><label for="a3">🍸 Travail ET plaisir, toujours</label>
+    </div>
+
+    <span class="step">06 · Petit bonus</span>
+    <div class="seg" role="group" aria-label="Bonus">
+      <input type="checkbox" id="legday"><label for="legday">🦵 J'avoue, je skippe le leg day</label>
+      <input type="checkbox" id="socks"><label for="socks">🧦 Je porte des chaussettes avec mes claquettes</label>
+      <input type="checkbox" id="bio"><label for="bio">📝 Ma bio dit juste « demande »</label>
+    </div>
+  </form>
+
+  <!-- RESULTS -->
+  <div class="res" id="res" aria-live="polite">
+    <div class="verdict">
+      <div class="av"><img src="img/portrait.webp" alt="Simon"></div>
+      <div><small>LE VERDICT DE SIMON</small><p id="verdict">…</p></div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="l">Séances</div><div class="v" id="kSessions">–</div><div class="s" id="kSessionsS">coachées avec Simon</div></div>
+      <div class="kpi"><div class="l">Durée estimée</div><div class="v" id="kTime">–</div><div class="s" id="kTimeS">–</div></div>
+    </div>
+
+    <div class="offer">
+      <div><div class="l">OFFRE CONSEILLÉE</div><h3 id="oName">–</h3><p id="oWhy">–</p></div>
+      <a class="btn" href="https://instagram.com/simonhoffmann.coaching" target="_blank" rel="noopener">Je réserve 💅</a>
+    </div>
+
+    <div class="grindr">
+      <span class="phone" id="phone">📱</span>
+      <div class="l">DATES GRINDR ESTIMÉES *</div>
+      <div class="top"><div class="big" id="gNum">0</div><div class="tier" id="gTier">…</div></div>
+      <ul id="gList"></ul>
+    </div>
+
+    <div class="bars">
+      <h4>Avant → Après (projection)</h4>
+      <div class="bar"><div class="t">Tour de bras <span id="bArm">–</span></div><div class="track"><div class="fill" id="fArm" style="width:0"></div></div></div>
+      <div class="bar"><div class="t">Tour de taille <span id="bWaist">–</span></div><div class="track"><div class="fill" id="fWaist" style="width:0"></div></div></div>
+      <div class="bar"><div class="t">Poids <span id="bWeight">–</span></div><div class="track"><div class="fill" id="fWeight" style="width:0"></div></div></div>
+      <div class="bar"><div class="t">Confiance en soi <span id="bConf">–</span></div><div class="track"><div class="fill" id="fConf" style="width:0"></div></div></div>
+    </div>
+
+    <div class="fun">
+      <div><b id="fShakes">–</b><span>shakers bus</span></div>
+      <div><b id="fEggs">–</b><span>œufs sacrifiés</span></div>
+      <div><b id="fSelfies">–</b><span>selfies miroir</span></div>
+    </div>
+  </div>
+</div>
+
+<p class="disclaimer">* Estimations 100 % humoristiques, calculées sur des bases vaguement scientifiques (≈ 1 kg de muscle par mois pour un débutant, le reste c'est de la magie). Ce n'est pas un avis médical. Grindr n'est pas partenaire, aucune date n'est garantie, remboursée ou échangeable. La régularité, par contre, marche à tous les coups. Coaching réservé aux 18–30 ans.</p>
+</main>
+
+<footer>© 2026 Simon Hoffmann · Coach sportif diplômé d'État · Strasbourg</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var form=$('form');
+  var TARGETS={
+    masse:{label:'Kilos de muscle à prendre',min:1,max:15,step:.5,def:5,unit:'kg',sign:'+'},
+    seche:{label:'Centimètres de tour de taille à perdre',min:1,max:25,step:1,def:8,unit:'cm',sign:'−'},
+    bras:{label:'Centimètres de tour de bras à gagner',min:.5,max:8,step:.5,def:3,unit:'cm',sign:'+'},
+    pride:{label:'Niveau de glow-up souhaité',min:1,max:10,step:1,def:7,unit:'/10',sign:''}
+  };
+  var lastGoal='masse', lastG=null;
+  function val(id){var v=parseFloat($(id).value);return isFinite(v)?v:0}
+  function radio(n){var r=form.querySelector('input[name='+n+']:checked');return r?r.value:null}
+  function fmt(n,d){return n.toLocaleString('fr-FR',{maximumFractionDigits:d==null?1:d})}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+
+  function setupTarget(goal){
+    var t=TARGETS[goal],r=$('target');
+    r.min=t.min;r.max=t.max;r.step=t.step;r.value=t.def;$('targetLabel').textContent=t.label;
+  }
+
+  function rain(set,n){for(var i=0;i<n;i++){(function(i){setTimeout(function(){var s=document.createElement('span');s.className='fall';s.textContent=set[Math.floor(Math.random()*set.length)];s.style.left=Math.random()*100+'vw';s.style.animationDuration=(2+Math.random()*2)+'s';document.body.appendChild(s);setTimeout(function(){s.remove()},4400)},i*50)})(i)}}
+
+  function calc(){
+    var goal=radio('goal');
+    if(goal!==lastGoal){setupTarget(goal);lastGoal=goal}
+    var T=TARGETS[goal], target=parseFloat($('target').value);
+    var h=clamp(val('h'),140,220), w=clamp(val('w'),40,200), arm=clamp(val('arm'),18,60), waist=clamp(val('waist'),55,160);
+    var freq=parseInt($('freq').value,10), lvl=parseInt(radio('lvl'),10), apero=parseInt(radio('apero'),10);
+    var legday=$('legday').checked, socks=$('socks').checked, bio=$('bio').checked;
+    $('targetVal').textContent=T.sign+fmt(target)+' '+T.unit;
+    $('freqVal').textContent=freq;
+
+    // --- progression (weekly rates at 3 sessions/week) ---
+    var lvlF=[0,1,1.35,1.8][lvl];               // plus tu es avancé, plus c'est lent
+    var freqF=clamp(freq/3,.45,1.35);            // plus de séances = plus vite (jusqu'à un plafond)
+    var dKg=0,dWaist=0,dArm=0,weeks;
+    var warn='';
+    if(goal==='masse'){
+      dKg=target; weeks=target/(0.25/lvlF*freqF); dArm=target*0.45; dWaist=target*0.15;
+    }else if(goal==='seche'){
+      var maxCm=Math.max(0,waist-68); // on vise canon, pas cure-dent
+      if(target>maxCm){warn='🍑 On vise canon, pas cure-dent : avec ton tour de taille actuel, Simon plafonne l’objectif à −'+fmt(maxCm,0)+' cm.';target=maxCm}
+      dWaist=-target; weeks=Math.max(1,target/(0.7/Math.sqrt(lvlF)*freqF)); dKg=-target*0.55; dArm=target*0.05;
+    }else if(goal==='bras'){
+      dArm=target; weeks=target/(0.2/lvlF*freqF); dKg=target*0.9; dWaist=0;
+    }else{ // pride : un peu de tout
+      dArm=target*0.35; dWaist=-Math.min(target*0.9,Math.max(0,waist-72)); dKg=target*0.3;
+      weeks=Math.max(dArm/(0.2/lvlF*freqF), -dWaist/(0.7*freqF), 3);
+    }
+    // IMC plancher en sèche
+    var newW=w+dKg, bmiNew=newW/Math.pow(h/100,2);
+    if(bmiNew<18.5 && dKg<0){var floorW=18.5*Math.pow(h/100,2);dKg=Math.min(0,floorW-w);newW=w+dKg;
+      warn='🌿 Simon ne te fera pas maigrir plus : ton poids est déjà top. On part plutôt sur du muscle et de la tonicité.';}
+    $('warn').textContent=warn;$('warn').classList.toggle('on',!!warn);
+
+    weeks=Math.max(1,Math.ceil(weeks));
+    var sessions=Math.round(weeks*freq);
+    var months=weeks/4.345;
+    var end=new Date();end.setDate(end.getDate()+weeks*7);
+    var endStr=end.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+
+    $('kSessions').textContent=fmt(sessions,0);
+    $('kSessionsS').textContent=freq+' par semaine, avec Simon'+(freq>=5?' (et sa patience)':'');
+    $('kTime').textContent=weeks<9?weeks+' sem.':fmt(months,1)+' mois';
+    $('kTimeS').textContent='Glow-up prévu le '+endStr;
+
+    // --- offre conseillée ---
+    var oName,oWhy;
+    if(apero===2){oName='Sweat & Spritz 🍸';oWhy='Tu l’as dit toi-même : travail ET plaisir. Une séance, puis un petit verre. Tarif : XX € / séance.'}
+    else if(weeks<=4){oName='Le Premier Date';oWhy='Objectif court : quelques séances pour poser les bases. Tarif : XX € / séance.'}
+    else{var n=Math.ceil(months/3);oName='Le Plan à 3 (mois)'+(n>1?' × '+n:'');oWhy=(n>1?'Un plan à 3… renouvelé '+n+' fois. Tu es une personne de relations longues, bravo. ':'La formule idéale pour ton objectif. ')+'Tarif : XXX € / mois.'+(apero===1?' Bonus conseillé : une séance Sweat & Spritz pour fêter ça.':'')}
+    $('oName').textContent=oName;$('oWhy').textContent=oWhy;
+
+    // --- dates Grindr (100 % sérieux, bien sûr) ---
+    var items=[];
+    var fromArm=Math.round(Math.max(0,dArm)*2.2); if(fromArm) items.push(['Nouveaux biceps (photo de profil refaite)',fromArm]);
+    var fromWaist=Math.round(Math.max(0,-dWaist)*0.9); if(fromWaist) items.push(['Abdos visibles sur la photo torse nu',fromWaist]);
+    var fromKg=Math.round(Math.max(0,dKg)*0.8); if(fromKg) items.push(['T-shirts enfin remplis',fromKg]);
+    if(goal==='pride') items.push(['Effet char de la Pride',Math.round(target*1.5)]);
+    items.push(['Bonus « je vais à la salle » dans la bio',Math.max(1,Math.round(sessions/25))]);
+    if(apero>=1) items.push(['Tu proposes un verre au lieu de « dispo ? »',apero===2?3:1]);
+    if(legday) items.push(['Leg day skippé (ça se voit, désolé)',-3]);
+    if(socks) items.push(['Chaussettes + claquettes',-2]);
+    if(bio) items.push(['Bio « demande »',-1]);
+    var g=items.reduce(function(s,i){return s+i[1]},0); g=Math.max(0,g);
+    var tier=g===0?'Pour l’instant, c’est surtout toi et ton shaker':g<5?'Discret mais efficace':g<12?'Ton téléphone va chauffer':g<25?'Il va te falloir un agenda partagé':'Toute la Pride de Strasbourg te connaît';
+    $('gNum').textContent=g;$('jumpG').textContent=g;$('gTier').textContent=tier;
+    $('gList').innerHTML=items.map(function(i){return '<li>'+i[0]+'<b class="'+(i[1]<0?'neg':'')+'">'+(i[1]>0?'+':'')+i[1]+'</b></li>'}).join('')+
+      '<li>Messages « slt » sans photo reçus <b>×'+Math.max(1,Math.round(g*2.5))+'</b></li>';
+    if(lastG!==null && g>lastG){var p=$('phone');p.classList.remove('buzz');void p.offsetWidth;p.classList.add('buzz')}
+    lastG=g;
+
+    // --- bars ---
+    function bar(id,fid,from,to,unit,good){
+      $(id).textContent=fmt(from)+' → '+fmt(to)+' '+unit;
+      var pct=good?clamp(55+(to-from)/Math.max(1,from)*400,8,100):clamp(55+(from-to)/Math.max(1,from)*400,8,100);
+      $(fid).style.width=pct+'%';
+    }
+    bar('bArm','fArm',arm,arm+dArm,'cm',true);
+    bar('bWaist','fWaist',waist,waist+dWaist,'cm',false);
+    $('bWeight').textContent=fmt(w)+' → '+fmt(newW)+' kg';$('fWeight').style.width=clamp(50+Math.abs(dKg)*4,10,100)+'%';
+    var conf=clamp(Math.round(40+sessions*0.9+(legday?-5:5)),10,100);
+    $('bConf').textContent=conf>=100?'∞ (slay)':conf+' %';$('fConf').style.width=conf+'%';
+
+    // --- fun stats ---
+    $('fShakes').textContent=fmt(Math.round(sessions*1.2),0);
+    $('fEggs').textContent=fmt(Math.round(weeks*7*(goal==='masse'||goal==='bras'?3:2)),0);
+    $('fSelfies').textContent=fmt(Math.round(sessions*(lvl===3?4:1.5)),0);
+
+    // --- verdict ---
+    var v;
+    if(goal==='masse') v='+'+fmt(dKg)+' kg en '+(weeks<9?weeks+' semaines':fmt(months,1)+' mois')+'. Prépare-toi à racheter des t-shirts une taille au-dessus. Tes anciens, tu pourras les offrir à ton ex.';
+    else if(goal==='seche') v=(dWaist===0?'Ton ventre est déjà parfait, on va travailler la tonicité.':'−'+fmt(-dWaist)+' cm de tour de taille. Ta ceinture va devoir se faire de nouveaux trous. Toi, de nouveaux amis.');
+    else if(goal==='bras') v='+'+fmt(dArm)+' cm de bras. Tes manches vont souffrir. Pense à prévenir ton pressing.';
+    else v='Glow-up '+fmt(target,0)+'/10 : torse nu sur le char, lunettes en cœur, et un dos qui fait de l’ombre à la moitié du cortège.';
+    if(freq>=6) v+=' (6 séances par semaine ? Respect. Mais le repos, c’est aussi de la muscu.)';
+    if(legday) v+=' Et on fera le leg day. Ce n’est pas négociable.';
+    $('verdict').textContent=v;
+  }
+
+  form.addEventListener('input',calc);
+  form.addEventListener('change',function(e){
+    calc();
+    if(e.target.id==='g4') rain(['🌈','🪩','✨'],24);
+    if(e.target.id==='a3') rain(['🍸','🥂'],16);
+    if(e.target.id==='legday'&&e.target.checked) rain(['🦵','😤'],14);
+  });
+  setupTarget('masse');calc();
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){$('jump').classList.toggle('hide',e[0].isIntersecting)},{threshold:.15}).observe($('res'))}
+})();
+</script>
+</body>
+</html>

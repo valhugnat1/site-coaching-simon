@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simon Hoffmann · Choix du design</title>
+<style>
+:root{--bg:#f4f1ec;--ink:#1d1d1b;--mute:#6b6862;--line:#dcd6cc;--card:#fff;--accent:#1d1d1b}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--ink:#f2efe9;--mute:#a19d95;--line:#33312d;--card:#1f1e1b;--accent:#f2efe9}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,sans-serif;padding:48px 16px}
+main{max-width:760px;margin:0 auto}
+h1{font-size:clamp(30px,6vw,44px);line-height:1.1;letter-spacing:-.02em}
+p.lead{color:var(--mute);margin:12px 0 32px}
+h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:28px 0 12px}
+a.card{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:10px;text-decoration:none;color:inherit;transition:transform .12s,border-color .12s}
+a.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+a.card b{display:block;font-size:18px}
+a.card span{color:var(--mute);font-size:15px}
+a.card i{font-style:normal;font-size:22px}
+footer{margin-top:40px;color:var(--mute);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Site de Simon · choisis ton design</h1>
+  <p class="lead">Page provisoire. Une fois la version choisie, elle remplace cette page (voir README).</p>
+
+  <h2>Versions pro</h2>
+  <a class="card" href="brut.html"><div><b>1 · Brut</b><span>Noir, jaune fluo, gros titres façon affiche de salle</span></div><i>→</i></a>
+  <a class="card" href="editorial.html"><div><b>2 · Éditorial</b><span>Crème, vert sapin, esprit magazine, élégant</span></div><i>→</i></a>
+  <a class="card" href="pop.html"><div><b>3 · Pop</b><span>Couleurs vives, stickers, avant/après interactifs</span></div><i>→</i></a>
+
+  <h2>Versions blague</h2>
+  <a class="card" href="disco.html"><div><b>4 · Disco Gym</b><span>La version camp avec 9 myster eggs</span></div><i>→</i></a>
+  <a class="card" href="calculateur.html"><div><b>5 · Glow-up Calculator</b><span>Séances, durée, offre… et dates Grindr</span></div><i>→</i></a>
+
+  <footer>© 2026 Simon Hoffmann · Coach sportif diplômé d'État · Strasbourg</footer>
+</main>
+</body>
+</html>

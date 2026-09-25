@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simon Hoffmann — Coach Strasbourg</title>
+<meta name="description" content="Simon Hoffmann, coach sportif diplômé d'État à Strasbourg. Perte de poids, prise de muscle et remise en forme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0b; --ink:#f2f2ee; --mute:#8b8b86; --line:#262624;
+  --acid:#d4ff3a; --ink-on-acid:#0b0b0b;
+  --display:'Anton',Impact,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--display);font-size:22px;letter-spacing:.02em;text-decoration:none}
+.logo span{color:var(--acid)}
+nav ul{display:flex;gap:28px;list-style:none}
+nav ul a{text-decoration:none;color:var(--mute);font-size:14px}
+nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--acid);color:var(--ink-on-acid);font-weight:700;text-decoration:none;padding:14px 22px;font-size:15px;text-transform:uppercase;letter-spacing:.04em;border:0;transition:transform .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.btn.sm{padding:9px 14px;font-size:13px}
+
+/* hero */
+.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;align-items:end;min-height:calc(100vh - 60px);padding-top:56px}
+.hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(64px,11vw,168px);line-height:.86;letter-spacing:-.01em}
+.hero h1 .o{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hero h1 .a{color:var(--acid)}
+.hero .lead{max-width:520px;margin:28px 0 32px;color:#cfcfca;font-size:19px}
+.hero .left{padding-bottom:64px}
+.hero .ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero .ghost{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--acid);padding-bottom:2px;font-weight:500}
+.hero .pic{position:relative;align-self:end;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.hero .pic::before{content:"";position:absolute;bottom:0;left:8%;right:8%;height:78%;background:var(--acid)}
+.hero .pic img{position:relative;width:100%;max-width:520px;filter:grayscale(1) contrast(1.08)}
+.tag{position:absolute;z-index:2;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px}
+.tag.t1{top:22%;left:0}
+.tag.t2{bottom:14%;right:0;background:var(--bg);color:var(--acid);border:1px solid var(--acid)}
+
+/* ticker */
+.ticker{background:var(--acid);color:var(--ink-on-acid);overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line)}
+.ticker div{display:inline-block;padding:14px 0;font-family:var(--display);font-size:26px;text-transform:uppercase;animation:tick 28s linear infinite}
+.ticker span{margin:0 22px}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker div{animation:none}}
+
+/* sections */
+section{border-bottom:1px solid var(--line)}
+.sec{padding:110px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(44px,7vw,96px);line-height:.9}
+.sec-head h2 em{font-style:normal;color:var(--acid)}
+.sec-head p{max-width:380px;color:var(--mute)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.stat{padding:36px 24px 32px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(48px,6vw,84px);line-height:1;color:var(--acid)}
+.stat span{display:block;margin-top:12px;color:#cfcfca;font-size:15px}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.about p{font-size:20px;color:#dcdcd6;margin-bottom:18px}
+.about p strong{color:var(--ink);background:linear-gradient(transparent 60%,rgba(212,255,58,.35) 60%)}
+.list{list-style:none;border-top:1px solid var(--line)}
+.list li{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
+.list li .n{font-family:var(--mono);color:var(--acid);font-size:13px;padding-top:4px}
+.list li h3{font-size:18px;margin-bottom:4px}
+.list li p{font-size:15px;color:var(--mute);margin:0}
+
+/* transformations */
+.tf{display:grid;gap:40px}
+.case{display:grid;grid-template-columns:320px 1fr;gap:32px;border:1px solid var(--line);padding:28px}
+.case h3{font-family:var(--display);font-weight:400;font-size:56px;text-transform:uppercase;line-height:1}
+.case .dur{margin:10px 0 22px;color:var(--mute)}
+.case .kpi{display:flex;flex-direction:column;gap:10px}
+.case .kpi div{font-family:var(--display);font-size:30px;text-transform:uppercase;line-height:1}
+.case .kpi div small{font-family:var(--body);font-size:13px;color:var(--mute);text-transform:none;display:block;margin-top:4px}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ph{position:relative;background:#161615;aspect-ratio:4/5;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph .lb{position:absolute;left:0;bottom:0;padding:6px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--bg);color:var(--ink)}
+.ph.after .lb{background:var(--acid);color:var(--ink-on-acid)}
+.pairs.four{grid-template-columns:repeat(4,1fr)}
+
+/* testimonial */
+.quote{display:grid;grid-template-columns:120px 1fr;gap:32px}
+.quote .mark{font-family:var(--display);font-size:200px;line-height:.8;color:var(--acid)}
+.quote blockquote{font-size:clamp(22px,2.6vw,34px);line-height:1.35;font-weight:500;letter-spacing:-.01em}
+.quote cite{display:block;margin-top:28px;font-style:normal}
+
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+.offer{padding:36px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:18px;position:relative}
+.offer:last-child{border-right:0}
+.offer h3{font-family:var(--display);font-weight:400;font-size:40px;text-transform:uppercase;line-height:1}
+.offer .price{font-family:var(--display);font-size:64px;line-height:1}
+.offer .price small{font-family:var(--body);font-size:15px;color:var(--mute)}
+.offer ul{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1}
+.offer li{padding-left:22px;position:relative;color:#cfcfca;font-size:15px}
+.offer li::before{content:"→";position:absolute;left:0;color:var(--acid)}
+.offer.hot{background:var(--acid);color:var(--ink-on-acid)}
+.offer.hot li{color:var(--ink-on-acid)}
+.offer.hot li::before{color:var(--ink-on-acid)}
+.offer.hot .price small{color:#333}
+.offer.hot .btn{background:var(--ink-on-acid);color:var(--acid)}
+.offer .ribbon{position:absolute;top:-1px;right:-1px;background:var(--ink);color:var(--bg);padding:6px 10px}
+.offer.hot .ribbon{background:var(--bg);color:var(--acid)}
+.placeholder{margin-top:18px;color:var(--mute)}
+
+/* contact */
+.contact{text-align:left}
+.contact h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(56px,12vw,190px);line-height:.85}
+.contact h2 span{color:var(--acid)}
+.contact .row{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;align-items:center}
+.contact .info{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line)}
+.contact .info div{padding:22px 0;border-bottom:1px solid var(--line)}
+.contact .info div p{font-size:18px;margin-top:6px}
+footer{padding:28px 0;color:var(--mute);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  nav ul{display:none}
+  .hero .wrap{grid-template-columns:1fr;min-height:auto;padding-top:40px}
+  .hero .left{padding-bottom:8px}
+  .hero .pic{max-width:420px;margin:0 auto;width:100%}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .about{grid-template-columns:1fr;gap:32px}
+  .case{grid-template-columns:1fr;padding:20px}
+  .pairs.four{grid-template-columns:1fr 1fr}
+  .offers{grid-template-columns:1fr}
+  .offer{border-right:0;border-bottom:1px solid var(--line)}
+  .quote{grid-template-columns:1fr;gap:0}
+  .quote .mark{font-size:120px}
+  .contact .info{grid-template-columns:1fr}
+  .sec{padding:72px 0}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .hero h1 .o{-webkit-text-stroke:1.5px var(--ink)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">SIMON<span>/</span>HOFFMANN</a>
+    <ul>
+      <li><a href="#coach">Le coach</a></li>
+      <li><a href="#resultats">Résultats</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#offres">Offres</a></li>
+    </ul>
+    <a href="#contact" class="btn sm">Réserver</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="left">
+      <p class="mono" style="color:var(--acid);margin-bottom:22px">Coach sportif · Strasbourg · Diplômé d'État</p>
+      <h1>Change<br><span class="o">ton</span> <span class="a">corps.</span><br>Pas qui<br>tu es.</h1>
+      <p class="lead">Perte de poids, prise de muscle, remise en forme : un coaching sur mesure à Strasbourg, par un coach qui est passé par là.</p>
+      <div class="ctas">
+        <a href="#offres" class="btn">Voir les offres →</a>
+        <a href="#resultats" class="ghost">Les avant / après</a>
+      </div>
+    </div>
+    <div class="pic">
+      <span class="tag t1">10+ ans de muscu</span>
+      <span class="tag t2">+35 kg de muscle</span>
+      <img src="img/portrait.webp" alt="Portrait de Simon Hoffmann, coach sportif">
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div>
+  <span>3 profils</span>✦<span>3 vies</span>✦<span>1 seule méthode</span>✦<span>Strasbourg</span>✦<span>Diplôme d'État</span>✦<span>Résultats réels</span>✦
+  <span>3 profils</span>✦<span>3 vies</span>✦<span>1 seule méthode</span>✦<span>Strasbourg</span>✦<span>Diplôme d'État</span>✦<span>Résultats réels</span>✦
+</div></div>
+
+<section id="coach">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <h2>Le <em>coach</em></h2>
+      <p class="mono">01 — Qui est Simon</p>
+    </div>
+    <div class="about">
+      <div>
+        <p>Je suis passé de gringalet en chapeau à <strong>+35 kg de muscle</strong>. Je sais ce que c'est de ne pas se sentir à sa place dans une salle — et de finir par y être chez soi.</p>
+        <p>Aujourd'hui j'accompagne celles et ceux qui veulent perdre du poids ou reprendre leur corps en main, <strong>sans jugement et sans bullshit</strong>.</p>
+        <p>Plus de 10 ans de musculation et un diplôme d'État. Je sais ce qui marche, et je te l'explique simplement.</p>
+      </div>
+      <ul class="list">
+        <li><span class="n">/01</span><div><h3>Programme 100 % perso</h3><p>Prise de masse, sèche ou simple remise en forme : on part de toi, pas d'un template.</p></div></li>
+        <li><span class="n">/02</span><div><h3>Suivi régulier</h3><p>Bilans, ajustements, mensurations. Tu sais où tu vas et pourquoi.</p></div></li>
+        <li><span class="n">/03</span><div><h3>Sans jugement</h3><p>Débutant complet ou sportif en pause : tu avances à ton rythme. Juste du travail, et du fun.</p></div></li>
+        <li><span class="n">/04</span><div><h3>Strasbourg & alentours</h3><p>Séances en salle sur Strasbourg, suivi à distance entre deux.</p></div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>10+</b><span>ans de musculation</span></div>
+      <div class="stat"><b>+35</b><span>kg pris par Simon lui-même</span></div>
+      <div class="stat"><b>DE</b><span>Diplômé d'État</span></div>
+      <div class="stat"><b>−13</b><span>cm de tour de taille pour Martin en 4 mois</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="resultats">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <h2>Avant <em>/</em> après</h2>
+      <p>Trois profils différents, trois vies différentes, une seule méthode. Photos réelles, visages masqués à la demande des clients.</p>
+    </div>
+    <div class="tf">
+      <article class="case">
+        <div>
+          <p class="mono" style="color:var(--acid)">Le coach lui-même</p>
+          <h3>Simon</h3>
+          <p class="dur">Des années de travail</p>
+          <div class="kpi">
+            <div>+35 kg<small>de masse</small></div>
+            <div>+14 cm<small>de tour de bras</small></div>
+          </div>
+        </div>
+        <div class="pairs four">
+          <div class="ph"><img src="img/simon_before_front.jpg" alt="Simon avant, de face"><span class="lb">Avant</span></div>
+          <div class="ph after"><img src="img/simon_after_front.jpg" alt="Simon après, de face"><span class="lb">Après</span></div>
+          <div class="ph"><img src="img/simon_before_back.jpg" alt="Simon avant, de dos"><span class="lb">Avant</span></div>
+          <div class="ph after"><img src="img/simon_after_back.jpg" alt="Simon après, de dos"><span class="lb">Après</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div>
+          <p class="mono" style="color:var(--acid)">Client</p>
+          <h3>Martin</h3>
+          <p class="dur">4 mois</p>
+          <div class="kpi">
+            <div>−13 cm<small>de tour de taille</small></div>
+            <div>+1 cm<small>de tour de bras</small></div>
+          </div>
+        </div>
+        <div class="pairs four">
+          <div class="ph"><img src="img/martin_before_side.jpg" alt="Martin avant, de profil"><span class="lb">Avant</span></div>
+          <div class="ph after"><img src="img/martin_after_front.jpg" alt="Martin après, de face"><span class="lb">Après</span></div>
+          <div class="ph"><img src="img/martin_before_back.jpg" alt="Martin avant, de dos"><span class="lb">Avant</span></div>
+          <div class="ph after"><img src="img/martin_after_back.jpg" alt="Martin après, de dos"><span class="lb">Après</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div>
+          <p class="mono" style="color:var(--acid)">Client</p>
+          <h3>Théo</h3>
+          <p class="dur">3 mois</p>
+          <div class="kpi">
+            <div>+5 kg<small>de masse</small></div>
+            <div>+2,5 cm<small>de tour de bras</small></div>
+          </div>
+        </div>
+        <div class="pairs">
+          <div class="ph"><img src="img/theo_before.jpg" alt="Théo avant"><span class="lb">Avant</span></div>
+          <div class="ph after"><img src="img/theo_after.jpg" alt="Théo après"><span class="lb">Après</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="avis">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <h2>Ils <em>en parlent</em></h2>
+      <p class="mono">03 — Retour d'expérience</p>
+    </div>
+    <div class="quote">
+      <div class="mark">“</div>
+      <div>
+        <blockquote>Salut mec, je voulais prendre le temps pour te remercier ! Clairement y a un an j'aurais pas pensé arriver à faire 50 entraînements d'affilée, en étant régulier comme ça. C'est rien de fou, mais je sais que c'est le début dont j'avais besoin, et que ça ne va pas s'arrêter là !</blockquote>
+        <cite><span class="mono" style="color:var(--acid)">Martin</span> <span class="mono" style="color:var(--mute)">· −13 cm de tour de taille en 4 mois</span></cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offres">
+  <div class="wrap sec">
+    <div class="sec-head">
+      <h2>Les <em>offres</em></h2>
+      <p>Choisis ta formule. Première prise de contact gratuite, sans engagement.</p>
+    </div>
+    <div class="offers">
+      <div class="offer">
+        <span class="mono">Pour commencer</span>
+        <h3>Découverte</h3>
+        <div class="price">XX €<small> / séance</small></div>
+        <ul>
+          <li>1 séance d'1 h en salle</li>
+          <li>Bilan de départ & objectifs</li>
+          <li>Premier programme offert</li>
+        </ul>
+        <a href="#contact" class="btn">Je teste</a>
+      </div>
+      <div class="offer">
+        <span class="ribbon mono">Le + choisi</span>
+        <span class="mono">Pour se transformer</span>
+        <h3>Transfo 3 mois</h3>
+        <div class="price">XXX €<small> / mois</small></div>
+        <ul>
+          <li>X séances coachées par mois</li>
+          <li>Programme & nutrition sur mesure</li>
+          <li>Suivi WhatsApp entre les séances</li>
+          <li>Bilan photo + mensurations</li>
+        </ul>
+        <a href="#contact" class="btn">Je me lance</a>
+      </div>
+      <div class="offer hot">
+        <span class="ribbon mono">👯 Duo</span>
+        <span class="mono">À deux, c'est mieux</span>
+        <h3>Duo</h3>
+        <div class="price">XX €<small> / séance à 2</small></div>
+        <ul>
+          <li>1 séance coachée pour deux</li>
+          <li>Entre potes, en couple ou entre collègues</li>
+          <li>La motivation × 2, le prix partagé</li>
+        </ul>
+        <a href="#contact" class="btn">On vient à deux</a>
+      </div>
+    </div>
+    <p class="placeholder mono">* Tarifs indicatifs — à définir</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap sec contact">
+    <p class="mono" style="color:var(--acid);margin-bottom:18px">05 — On s'y met ?</p>
+    <h2>Ton corps.<br><span>Ton rythme.</span></h2>
+    <div class="row">
+      <a class="btn" href="https://instagram.com/simonhoffmann.coaching" target="_blank" rel="noopener">DM sur Instagram →</a>
+      <a style="border-bottom:1px solid var(--acid);text-decoration:none;font-weight:500" href="mailto:contact@exemple.fr">contact@exemple.fr</a>
+    </div>
+    <div class="info">
+      <div><span class="mono" style="color:var(--mute)">Instagram</span><p>@simonhoffmann.coaching</p></div>
+      <div><span class="mono" style="color:var(--mute)">Zone</span><p>Strasbourg & Eurométropole</p></div>
+      <div><span class="mono" style="color:var(--mute)">Téléphone</span><p>06 XX XX XX XX</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Simon Hoffmann — Coach sportif diplômé d'État</span><span>@simonhoffmann.coaching</span></div></footer>
+
+</body>
+</html>

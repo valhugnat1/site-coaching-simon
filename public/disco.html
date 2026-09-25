@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simon · Disco Gym Strasbourg</title>
+<meta name="description" content="Simon, coach sportif diplômé d'État à Strasbourg. Remise en forme pour les garçons gays de 18 à 30 ans. Paillettes incluses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#1a0633; --night-2:#2a0b52; --ink:#fff6fd; --mute:#d7c4f0;
+  --pink:#ff3ea5; --hot:#ff007a; --lime:#c6ff3d; --cyan:#3df2ff; --sun:#ffd23f; --violet:#8f5bff;
+  --rainbow:linear-gradient(90deg,#ff3b3b,#ff9f1c,#ffe93d,#3ddc84,#3db8ff,#a35bff,#ff3ea5);
+  --chrome:linear-gradient(180deg,#fff 0%,#ffd6f0 35%,#ff7ac6 50%,#fff 52%,#c9a6ff 100%);
+  --disp:'Bungee',Impact,sans-serif; --script:'Pacifico',cursive; --body:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='24' font-size='24'%3E%F0%9F%8F%8B%EF%B8%8F%3C/text%3E%3C/svg%3E") 4 4,auto}
+::selection{background:var(--pink);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.rb{height:8px;background:var(--rainbow)}
+.chrome{background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 var(--hot)) drop-shadow(0 0 18px rgba(255,62,165,.55))}
+.script{font-family:var(--script);font-weight:400;color:var(--pink);text-transform:none;letter-spacing:0}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-size:16px;text-decoration:none;padding:14px 22px;border-radius:999px;background:var(--pink);color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px var(--hot),0 0 26px rgba(255,62,165,.7);transition:transform .15s;cursor:inherit}
+.btn:hover{transform:scale(1.05) rotate(-2deg)}
+.btn.alt{background:transparent;box-shadow:0 0 0 3px var(--cyan),0 0 22px rgba(61,242,255,.5)}
+.pill{display:inline-block;border:2px solid var(--pink);color:var(--ink);border-radius:999px;padding:5px 14px;font-weight:600;font-size:14px}
+
+/* sparkles bg */
+.sparkles{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:
+  radial-gradient(2px 2px at 10% 20%,#fff,transparent),radial-gradient(2px 2px at 80% 30%,#ffd6f0,transparent),
+  radial-gradient(1.5px 1.5px at 30% 70%,#fff,transparent),radial-gradient(2px 2px at 60% 85%,#c9a6ff,transparent),
+  radial-gradient(1.5px 1.5px at 90% 60%,#fff,transparent),radial-gradient(2px 2px at 45% 40%,#fff,transparent);
+  animation:twinkle 3s ease-in-out infinite alternate;opacity:.7}
+@keyframes twinkle{to{opacity:.25}}
+main,nav,footer{position:relative;z-index:1}
+
+/* nav */
+nav{padding:16px 0}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-family:var(--script);font-size:30px;text-decoration:none;color:var(--pink);text-shadow:0 0 14px rgba(255,62,165,.8);user-select:none;cursor:inherit}
+.logo small{font-family:var(--disp);font-size:12px;color:var(--lime);margin-left:6px;text-shadow:none;vertical-align:middle}
+nav .links{display:flex;gap:22px;font-weight:600}
+nav .links a{text-decoration:none;color:var(--mute)}
+nav .links a:hover{color:var(--lime)}
+
+/* hero */
+.hero{padding:30px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero h1{font-family:var(--disp);font-weight:400;font-size:clamp(46px,7.4vw,104px);line-height:.95;text-transform:uppercase}
+.hero h1 .script{display:block;font-size:.58em;line-height:1.35;margin:10px 0 14px;transform:rotate(-4deg);text-shadow:0 0 20px rgba(255,62,165,.8)}
+.hero p.lead{font-size:20px;color:var(--mute);max-width:520px;margin:24px 0 28px}
+.hero p.lead b{color:var(--lime)}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero .pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.stage{position:relative;aspect-ratio:1/1.05}
+.halo{position:absolute;inset:6% 6% 0;border-radius:50% 50% 24px 24px;overflow:hidden;box-shadow:0 0 40px rgba(255,62,165,.55)}
+.halo::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,#ff3b3b,#ff9f1c,#ffe93d,#3ddc84,#3db8ff,#a35bff,#ff3ea5,#ff3b3b);animation:spin 8s linear infinite}
+.halo-in{position:absolute;inset:calc(6% + 10px) calc(6% + 10px) 0;border-radius:50% 50% 18px 18px;background:radial-gradient(circle at 50% 30%,#5b1aa8,var(--night) 70%);overflow:hidden}
+.halo-in img{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:112%;max-width:none;cursor:inherit;transition:transform .2s}
+.halo-in img:active{transform:translateX(-50%) scale(1.04)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.disco{position:absolute;top:-18px;right:4%;width:86px;height:86px;border-radius:50%;cursor:inherit;z-index:3;
+  background:repeating-conic-gradient(#e9e2ff 0 10deg,#9f8bd6 10deg 20deg),radial-gradient(circle at 35% 30%,#fff,transparent 45%);
+  background-blend-mode:screen;box-shadow:0 0 30px rgba(255,255,255,.6),inset -10px -12px 22px rgba(0,0,0,.35);animation:spin 6s linear infinite;border:0}
+.disco::before{content:"";position:absolute;left:50%;top:-40px;width:2px;height:40px;background:#fff;opacity:.6}
+.bubble{position:absolute;z-index:3;background:#fff;color:var(--night);font-weight:800;padding:10px 14px;border-radius:18px;font-size:15px;box-shadow:0 8px 0 var(--pink)}
+.bubble.b1{left:-4%;top:28%;transform:rotate(-6deg)}
+.bubble.b2{right:-2%;bottom:12%;transform:rotate(5deg);background:var(--lime)}
+.tap{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:3;font-size:12px;color:var(--mute);opacity:.8}
+
+/* marquee */
+.marq{background:var(--pink);color:#fff;overflow:hidden;white-space:nowrap;border-block:3px solid #fff}
+.marq div{display:inline-block;padding:12px 0;font-family:var(--disp);font-size:22px;animation:mq 26s linear infinite}
+.marq span{margin:0 16px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:100px 0}
+.h2{font-family:var(--disp);font-weight:400;font-size:clamp(38px,5.6vw,72px);line-height:1;text-transform:uppercase}
+.h2 .script{font-size:.7em;display:inline-block;transform:rotate(-3deg)}
+.sub{color:var(--mute);font-size:19px;max-width:620px;margin-top:16px}
+
+/* CV */
+.cv{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+.cv .c{border-radius:26px;padding:26px 22px;background:var(--night-2);border:2px solid rgba(255,255,255,.12);position:relative;overflow:hidden}
+.cv .c::after{content:"";position:absolute;inset:auto 0 0 0;height:6px;background:var(--rainbow)}
+.cv .big{font-family:var(--disp);font-size:52px;line-height:1;color:var(--lime)}
+.cv h3{font-size:20px;margin:10px 0 6px}
+.cv p{font-size:15px;color:var(--mute)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split p{font-size:19px;margin-bottom:16px}
+.split p em{font-style:normal;color:var(--pink);font-weight:800}
+.program{border:3px dashed var(--lime);border-radius:26px;padding:26px}
+.program h3{font-family:var(--disp);font-weight:400;font-size:22px;color:var(--lime);margin-bottom:14px}
+.program ol{list-style:none;display:grid;gap:10px}
+.program li{display:flex;gap:14px;align-items:baseline;font-size:17px}
+.program li b{font-family:var(--disp);font-weight:400;color:var(--pink);min-width:88px}
+.program li s{color:var(--mute)}
+
+/* before/after */
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.ba{background:#fff;color:var(--night);border-radius:28px;overflow:hidden;box-shadow:0 0 0 4px var(--pink),0 0 36px rgba(255,62,165,.45);display:flex;flex-direction:column}
+.ba .pics{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--night)}
+.ba .pics figure{position:relative}
+.ba .pics img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.ba .pics figcaption{position:absolute;left:8px;bottom:8px;background:var(--night);color:#fff;font-family:var(--disp);font-size:12px;padding:4px 10px;border-radius:999px}
+.ba .pics figure+figure figcaption{background:var(--lime);color:var(--night)}
+.ba .body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px}
+.ba h3{font-family:var(--disp);font-weight:400;font-size:28px}
+.ba .stats{display:flex;gap:8px;flex-wrap:wrap}
+.ba .stats span{background:var(--night);color:#fff;border-radius:999px;padding:4px 12px;font-weight:600;font-size:14px}
+.ba .quip{font-size:15px;color:#5a3f7a;font-style:italic}
+
+/* testimonial */
+.testi{position:relative}
+.dm{max-width:760px;margin:40px auto 0;background:#fff;color:var(--night);border-radius:28px 28px 28px 6px;padding:32px;font-size:21px;line-height:1.45;position:relative;box-shadow:0 10px 0 var(--pink)}
+.dm .from{display:flex;align-items:center;gap:12px;font-weight:800;margin-bottom:12px}
+.dm .av{width:42px;height:42px;border-radius:50%;background:var(--rainbow);display:grid;place-items:center;color:#fff;font-family:var(--disp)}
+.dm .react{position:absolute;right:20px;bottom:-24px;background:#fff;border-radius:999px;padding:4px 12px;font-size:22px;box-shadow:0 0 0 3px var(--pink)}
+.mirror{text-align:center;margin-top:48px;color:var(--mute);font-size:16px}
+.mirror b{color:var(--sun)}
+
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;align-items:stretch}
+.of{border-radius:30px;padding:30px 26px;background:var(--night-2);border:3px solid var(--violet);display:flex;flex-direction:column;gap:14px;position:relative}
+.of .kicker{font-family:var(--disp);font-size:13px;color:var(--cyan)}
+.of h3{font-family:var(--disp);font-weight:400;font-size:30px;line-height:1}
+.of .price{font-family:var(--disp);font-size:52px;line-height:1;cursor:help;position:relative;display:inline-block}
+.of .price small{font-family:var(--body);font-size:15px;color:var(--mute)}
+.of .price .tt{position:absolute;left:0;top:calc(100% + 8px);background:#fff;color:var(--night);font-family:var(--body);font-size:14px;font-weight:600;padding:8px 12px;border-radius:12px;width:240px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:5}
+.of .price:hover .tt,.of .price.show .tt{opacity:1}
+.of ul{list-style:none;display:grid;gap:9px;flex:1}
+.of li{display:flex;gap:10px}
+.of li::before{content:"💪"}
+.of.mid{border-color:var(--lime);box-shadow:0 0 30px rgba(198,255,61,.3)}
+.of.mid li::before{content:"✨"}
+.of.coq{background:linear-gradient(160deg,var(--pink),var(--violet));border-color:#fff;box-shadow:0 0 40px rgba(255,62,165,.6)}
+.of.coq .kicker{color:var(--lime)}
+.of.coq .price small{color:#fff}
+.of.coq li::before{content:"🍸"}
+.of .badge{position:absolute;top:-16px;right:18px;background:var(--lime);color:var(--night);font-family:var(--disp);font-size:13px;padding:6px 12px;border-radius:999px;transform:rotate(4deg)}
+.of.coq .badge{background:#fff;color:var(--hot)}
+.fine{margin-top:22px;color:var(--mute);font-size:14px}
+
+/* FAQ */
+.faq{max-width:820px;margin:40px auto 0;display:grid;gap:12px}
+.faq details{background:var(--night-2);border-radius:20px;padding:18px 22px;border:2px solid rgba(255,255,255,.1)}
+.faq summary{cursor:inherit;font-weight:800;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"＋";color:var(--pink)}
+.faq details[open] summary::after{content:"－"}
+.faq details p{margin-top:10px;color:var(--mute)}
+
+/* contact */
+.cta{border-radius:40px;padding:clamp(30px,6vw,70px);background:var(--rainbow);color:var(--night);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:8px;border-radius:32px;background:var(--night);z-index:0}
+.cta>*{position:relative;z-index:1;color:var(--ink)}
+.cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.cta .facts{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+
+footer{padding:40px 0 90px;color:var(--mute);font-size:14px;text-align:center}
+footer .secret{max-height:0;overflow:hidden;transition:max-height .6s;color:var(--lime);font-weight:600}
+footer .secret.on{max-height:80px;margin-top:10px}
+.rep{margin-top:16px;background:none;border:2px solid var(--mute);color:var(--mute);border-radius:999px;padding:6px 14px;font:600 13px var(--body);cursor:inherit}
+
+/* egg counter + toast */
+.eggs{position:fixed;left:16px;bottom:16px;z-index:50;background:#fff;color:var(--night);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px;box-shadow:0 0 0 3px var(--pink),0 6px 20px rgba(0,0,0,.4)}
+.toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-140%);z-index:60;background:var(--lime);color:var(--night);font-weight:800;padding:12px 18px;border-radius:16px;box-shadow:0 8px 0 var(--pink);transition:transform .35s;max-width:calc(100vw - 32px);text-align:center}
+.toast.on{transform:translate(-50%,0)}
+.fall{position:fixed;top:-60px;z-index:55;pointer-events:none;font-size:34px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(540deg)}}
+
+/* modes */
+body.disco-mode{animation:hue 2.4s linear infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+body.legday main{animation:shake .12s linear 14}
+@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-4px,2px)}75%{transform:translate(4px,-2px)}}
+.eggs{font-size:13px}
+@media (prefers-reduced-motion:reduce){.halo::before,.marq div,.halo,.disco,.sparkles{animation:none}body.disco-mode{animation:none}}
+
+@media (max-width:960px){
+  nav .links{display:none}
+  .hero .wrap,.split{grid-template-columns:1fr}
+  .stage{max-width:420px;margin:10px auto 0;width:92%}
+  .cv{grid-template-columns:1fr 1fr}
+  .ba-grid,.offers{grid-template-columns:1fr}
+  section{padding:72px 0}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .cv{grid-template-columns:1fr}
+  .bubble{font-size:13px}
+  .disco{width:64px;height:64px}
+}
+</style>
+</head>
+<body>
+<div class="sparkles"></div>
+<div class="rb"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" id="logo" title="Clique-moi. Plusieurs fois.">Simon<small>DISCO GYM</small></a>
+    <div class="links">
+      <a href="#cv">Le CV</a>
+      <a href="#glowup">Glow-ups</a>
+      <a href="#offres">Offres</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn" href="#contact" style="padding:9px 16px;font-size:13px">Book ton coach 💅</a>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="pills"><span class="pill">📍 Strasbourg</span><span class="pill">🏳️‍🌈 18–30 ans</span><span class="pill">🎓 Diplômé d'État</span></div>
+      <h1><span class="chrome">Des bras</span><span class="script">aussi solides que</span><span class="chrome">ta répartie</span></h1>
+      <p class="lead">Simon, coach sportif à Strasbourg, fait sortir les garçons gays du placard… <b>à haltères</b>. 10 ans de muscu, un diplôme d'État et une expérience de la vie gay qu'on qualifiera poliment d'<b>iconique</b>.</p>
+      <div class="ctas">
+        <a class="btn" href="#offres">Je veux le glow-up ✨</a>
+        <a class="btn alt" href="#glowup">Voir les preuves</a>
+      </div>
+    </div>
+    <div class="stage">
+      <button class="disco" id="disco" aria-label="Boule à facettes"></button>
+      <div class="halo"></div>
+      <div class="halo-in"><img id="portrait" src="img/portrait.webp" alt="Portrait de Simon"></div>
+      <span class="bubble b1">+35 kg de pure énergie</span>
+      <span class="bubble b2">Leg day : jamais skippé</span>
+    </div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true"><div>
+  <span>Push</span>💖<span>Pull</span>💖<span>Legs</span>💖<span>Brunch</span>💖<span>Serve</span>💖<span>Slay</span>💖<span>Repeat</span>💖
+  <span>Push</span>💖<span>Pull</span>💖<span>Legs</span>💖<span>Brunch</span>💖<span>Serve</span>💖<span>Slay</span>💖<span>Repeat</span>💖
+</div></div>
+
+<section id="cv">
+  <div class="wrap">
+    <h2 class="h2">Le CV <span class="script">de la reine des squats</span></h2>
+    <p class="sub">Tout le monde a un coach. Toi, tu vas avoir une icône avec un diplôme.</p>
+    <div class="cv">
+      <div class="c"><div class="big">10+</div><h3>ans de muscu</h3><p>Soit environ 3 000 selfies miroir. Tous validés par un jury.</p></div>
+      <div class="c"><div class="big">DE</div><h3>Diplômé d'État</h3><p>Oui, l'État l'a officiellement autorisé à te faire souffrir.</p></div>
+      <div class="c"><div class="big">+14</div><h3>cm de tour de bras</h3><p>Ses t-shirts ont porté plainte. Classée sans suite.</p></div>
+      <div class="c"><div class="big">∞</div><h3>d'expérience gay</h3><p>Il a tout vu, tout vécu. Rien ne le choque, surtout pas ton programme actuel.</p></div>
+    </div>
+
+    <div class="split" style="margin-top:72px">
+      <div>
+        <p>Il y a quelques années, Simon était le petit blond au chapeau qui soulevait surtout… des sourcils. Aujourd'hui il a pris <em>35 kg</em> et il aide les mecs de 18 à 30 ans à se sentir bien dans leur corps.</p>
+        <p>Chez lui : <em>zéro jugement</em>, zéro vestiaire toxique, zéro « no homo ». Juste de la sueur, de la technique et beaucoup de compliments mérités.</p>
+        <p>La seule chose qu'on garde dans le placard ici : <em>les kettlebells</em>.</p>
+      </div>
+      <div class="program">
+        <h3>Ta semaine type 🗓️</h3>
+        <ol>
+          <li><b>Lundi</b> <span>Pecs. Parce que tout le monde fait pecs le lundi, c'est la loi.</span></li>
+          <li><b>Mardi</b> <span>Dos. Pour enfin avoir un dos qui <i>serve</i>.</span></li>
+          <li><b>Mercredi</b> <span>Legs. <s>Repos</s> Non. Legs.</span></li>
+          <li><b>Jeudi</b> <span>Épaules & bras. Prépare-toi aux photos.</span></li>
+          <li><b>Vendredi</b> <span>Cardio… sur la piste de danse.</span></li>
+          <li><b>Dimanche</b> <span>Brunch protéiné. Non négociable.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="glowup" style="background:linear-gradient(180deg,transparent,rgba(143,91,255,.18),transparent)">
+  <div class="wrap">
+    <h2 class="h2">Glow-ups <span class="script">certifiés sans filtre</span></h2>
+    <p class="sub">Photos réelles. Visages cachés, parce que la discrétion c'est chic (et que leurs ex n'ont pas besoin de savoir).</p>
+    <div class="ba-grid">
+      <article class="ba">
+        <div class="pics">
+          <figure><img src="img/simon_before_front.jpg" alt="Simon avant"><figcaption>AVANT</figcaption></figure>
+          <figure><img src="img/simon_after_front.jpg" alt="Simon après"><figcaption>APRÈS</figcaption></figure>
+        </div>
+        <div class="body">
+          <h3>Simon 👑</h3>
+          <div class="stats"><span>+35 kg</span><span>+14 cm de bras</span></div>
+          <p class="quip">Il a gardé la frange émotionnelle. Il a perdu le chapeau. Le deuil a été long.</p>
+        </div>
+      </article>
+      <article class="ba">
+        <div class="pics">
+          <figure><img src="img/martin_before_side.jpg" alt="Martin avant"><figcaption>AVANT</figcaption></figure>
+          <figure><img src="img/martin_after_front.jpg" alt="Martin après 4 mois"><figcaption>4 MOIS</figcaption></figure>
+        </div>
+        <div class="body">
+          <h3>Martin</h3>
+          <div class="stats"><span>−13 cm de taille</span><span>+1 cm de bras</span></div>
+          <p class="quip">Sa ceinture a dû se faire de nouveaux trous. Son ego aussi, mais vers le haut.</p>
+        </div>
+      </article>
+      <article class="ba">
+        <div class="pics">
+          <figure><img src="img/theo_before.jpg" alt="Théo avant"><figcaption>AVANT</figcaption></figure>
+          <figure><img src="img/theo_after.jpg" alt="Théo après 3 mois"><figcaption>3 MOIS</figcaption></figure>
+        </div>
+        <div class="body">
+          <h3>Théo</h3>
+          <div class="stats"><span>+5 kg</span><span>+2,5 cm de bras</span></div>
+          <p class="quip">Les abdos sont arrivés sans prévenir. Comme un ex à 2 h du mat'.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="testi">
+  <div class="wrap">
+    <h2 class="h2" style="text-align:center">Les DMs <span class="script">parlent d'eux-mêmes</span></h2>
+    <div class="dm">
+      <div class="from"><span class="av">M</span>Martin</div>
+      Salut mec, je voulais prendre le temps pour te remercier ! Clairement y a un an j'aurais pas pensé arriver à faire 50 entraînements d'affilée, en étant régulier comme ça. C'est rien de fou, mais je sais que c'est le début dont j'avais besoin, et que ça ne va pas s'arrêter là !
+      <span class="react">❤️</span>
+    </div>
+    <p class="mirror">Avis du miroir de la salle : <b>★★★★★</b> « Il me regarde plus que ses clients. »</p>
+  </div>
+</section>
+
+<section id="offres">
+  <div class="wrap">
+    <h2 class="h2">Choisis <span class="script">ta relation</span></h2>
+    <p class="sub">Sans engagement… sauf avec tes quadriceps.</p>
+    <div class="offers">
+      <div class="of">
+        <span class="kicker">Pour faire connaissance</span>
+        <h3>Le Premier Date</h3>
+        <div class="price" data-tt="Prix encore flou. Comme un mec qui dit « on verra ».">XX €<small> / séance</small><span class="tt"></span></div>
+        <ul><li>1 h de séance, on se découvre</li><li>Bilan & objectifs</li><li>Si ça matche, on se revoit</li></ul>
+        <a class="btn alt" href="#contact">Swipe à droite</a>
+      </div>
+      <div class="of mid">
+        <span class="badge">Le + populaire</span>
+        <span class="kicker">Pour les gens sérieux</span>
+        <h3>Le Plan à 3 (mois)</h3>
+        <div class="price" data-tt="XXX € : le prix d'un brunch par semaine. Mais avec des abdos.">XXX €<small> / mois</small><span class="tt"></span></div>
+        <ul><li>X séances coachées par mois</li><li>Programme + nutrition sur mesure</li><li>Suivi par message (il répond, lui)</li><li>Bilans photos & mensurations</li></ul>
+        <a class="btn" href="#contact">Je m'engage 💍</a>
+      </div>
+      <div class="of coq">
+        <span class="badge">🍸 Coquine</span>
+        <span class="kicker">Travail & plaisir</span>
+        <h3>Sweat &amp; Spritz</h3>
+        <div class="price" data-tt="Le verre est inclus. Le coach, non. Calme-toi.">XX €<small> / séance</small><span class="tt"></span></div>
+        <ul><li>Une vraie séance, on transpire</li><li>Suivie d'un petit verre ensemble</li><li>Parce qu'on peut allier travail et plaisir</li></ul>
+        <a class="btn" href="#contact" style="background:#fff;color:var(--hot)">Santé ! 🥂</a>
+      </div>
+    </div>
+    <p style="margin-top:28px;text-align:center"><a class="btn alt" href="calculateur.html">🧮 Pas sûr ? Calcule ton glow-up (et tes dates Grindr)</a></p>
+    <p class="fine">Tarifs à définir. Les XX ne sont pas une taille de t-shirt. L'abus d'alcool est dangereux pour la santé (et pour tes gains).</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="h2" style="text-align:center">FAQ <span class="script">(Frequently Asked Queens)</span></h2>
+    <div class="faq">
+      <details><summary>Je n'ai jamais mis les pieds dans une salle. C'est grave ?</summary><p>Non. Simon non plus, un jour. Et il portait un chapeau. Tu pars donc avec une longueur d'avance.</p></details>
+      <details><summary>Je vais devenir aussi énorme que Simon ?</summary><p>Avec 10 ans de régularité et 2 g de protéines par kilo, peut-être. En attendant, on vise « canon » avant « frigo américain ».</p></details>
+      <details><summary>Je suis hétéro, j'ai le droit de venir ?</summary><p>Bien sûr. On est inclusifs. Même avec toi.</p></details>
+      <details><summary>C'est quoi exactement l'offre coquine ?</summary><p>Une séance, puis un petit verre ensemble. C'est tout. On a dit coquine, pas indécente. Rhabille-toi.</p></details>
+      <details><summary>Tu fais du cardio ?</summary><p>Seulement quand quelqu'un de mignon entre dans la salle. Et le vendredi soir, sur de la pop.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta">
+      <h2 class="h2">Prêt à <span class="script">slay</span> ?</h2>
+      <p class="sub" style="margin:16px auto 0">Envoie un DM. Pas un « salut ça va ». Un vrai message, avec tes objectifs.</p>
+      <div class="row">
+        <a class="btn" href="https://instagram.com/simonhoffmann.coaching" target="_blank" rel="noopener">DM @simonhoffmann.coaching</a>
+        <a class="btn alt" href="mailto:contact@exemple.fr">contact@exemple.fr</a>
+      </div>
+      <div class="facts"><span class="pill">📍 Strasbourg</span><span class="pill">📞 06 XX XX XX XX</span><span class="pill">🏳️‍🌈 18–30 ans</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Simon Hoffmann · Coach sportif diplômé d'État · Aucun leg day n'a été sauté pendant la création de ce site.</div>
+    <div class="secret" id="secret">🥚 Tu as scrollé jusqu'en bas ? Ton pouce a plus d'endurance que ton cardio. Respect.</div>
+    <button class="rep" id="rep">🏋️ Fais une série : 0/12</button>
+  </div>
+</footer>
+
+<div class="eggs" id="eggs" title="Il y en a 9 cachés. Bonne chasse.">🥚 Mister Eggs : 0/9</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var TOTAL=9, found={};
+  var eggsEl=document.getElementById('eggs'), toast=document.getElementById('toast'), tt;
+  function say(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},3200)}
+  function egg(id,msg){
+    if(!found[id]){found[id]=1;var n=Object.keys(found).length;eggsEl.textContent='🥚 Mister Eggs : '+n+'/'+TOTAL;
+      if(n===TOTAL){msg+='  —  9/9 !! Tu es officiellement une Egg Queen 👑 Code promo : GAINZ (placeholder)';rain(['👑','🥚','💖'],40)}}
+    say(msg);
+  }
+  function rain(set,n){
+    for(var i=0;i<n;i++){(function(i){setTimeout(function(){
+      var s=document.createElement('span');s.className='fall';s.textContent=set[Math.floor(Math.random()*set.length)];
+      s.style.left=Math.random()*100+'vw';s.style.animationDuration=(2.2+Math.random()*2)+'s';
+      document.body.appendChild(s);setTimeout(function(){s.remove()},4600)},i*60)})(i)}
+  }
+
+  // 1. Konami code -> disco mode
+  var k=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'],ki=0;
+  // 2. type "gainz" -> protein shake rain
+  var typed='';
+  document.addEventListener('keydown',function(e){
+    var key=e.key.length===1?e.key.toLowerCase():e.key;
+    ki=(key===k[ki])?ki+1:(key===k[0]?1:0);
+    if(ki===k.length){ki=0;document.body.classList.toggle('disco-mode');rain(['🪩','✨','🌈'],30);egg('konami','🪩 Code Konami ! Mode DISCO activé. Le leg day, mais en boîte de nuit.')}
+    if(e.key.length===1){typed=(typed+e.key.toLowerCase()).slice(-10);
+      if(typed.endsWith('gainz')){rain(['🥤','🥚','🍗','🥦'],36);egg('gainz','🥤 Tu as tapé GAINZ. Pluie de protéines ! 2 g par kilo, on a dit.')}
+      if(typed.endsWith('slay')){rain(['💅','👑','✨'],30);egg('slay','💅 SLAY détecté. Le site te fait une révérence.')}}
+  });
+
+  // 3. disco ball tapped 3x (mobile-friendly disco)
+  var dc=0;document.getElementById('disco').addEventListener('click',function(){dc++;
+    if(dc>=3){dc=0;document.body.classList.toggle('disco-mode');rain(['🪩','🌈','💃'],26);egg('disco','🪩 3 tapes sur la boule à facettes : la salle devient un club. Cardio validé.')}
+    else say('🪩 Encore '+(3-dc)+'…')});
+
+  // 4. logo x5 -> leg day shake
+  var lc=0,lt;document.getElementById('logo').addEventListener('click',function(e){e.preventDefault();lc++;clearTimeout(lt);lt=setTimeout(function(){lc=0},1500);
+    if(lc>=5){lc=0;document.body.classList.remove('legday');void document.body.offsetWidth;document.body.classList.add('legday');egg('legday','🦵 LEG DAY. Tout le site tremble, comme tes jambes demain matin.')}});
+
+  // 5. tap portrait -> flex
+  document.getElementById('portrait').addEventListener('click',function(){rain(['💪','💪','🔥'],22);egg('flex','💪 Tu as touché Simon. Il a flexé par réflexe. Désolé.')});
+
+  // 6. rep counter
+  var reps=0,rb=document.getElementById('rep');rb.addEventListener('click',function(){reps++;
+    if(reps<12){rb.textContent='🏋️ Fais une série : '+reps+'/12'}
+    else{rb.textContent='🏆 Série validée. Repos : 90 secondes, pas 90 minutes sur Grindr.';egg('reps','🏋️ 12 reps ! Ton index est plus musclé que ta motivation du lundi.');reps=0}});
+
+  // 7. price tooltips
+  document.querySelectorAll('.price').forEach(function(p){
+    p.querySelector('.tt').textContent=p.dataset.tt;
+    function hit(){egg('price','💸 Tu as trouvé les prix cachés… qui ne sont pas encore fixés.')}
+    p.addEventListener('mouseenter',hit);p.addEventListener('click',function(){p.classList.toggle('show');hit()})});
+
+  // 8. scroll to bottom
+  window.addEventListener('scroll',function(){
+    if(!found.scroll&&window.innerHeight+window.scrollY>=document.body.scrollHeight-4){document.getElementById('secret').classList.add('on');egg('scroll','🥚 Arrivé en bas de page. Maintenant fais pareil avec tes squats : jusqu’en bas.')}});
+
+  // bonus (not counted): tab title & console
+  var base=document.title;document.addEventListener('visibilitychange',function(){document.title=document.hidden?'Reviens, ta série est pas finie 😤':base});
+  console.log('%c🏋️ Tu inspectes le code ? Inspecte plutôt ta posture au squat.','font:700 16px sans-serif;color:#ff3ea5');
+  console.log('%cIndices : ↑↑↓↓←→←→BA · tape « gainz » · tape « slay » · le logo aime qu’on insiste.','color:#c6ff3d');
+})();
+</script>
+</body>
+</html>
