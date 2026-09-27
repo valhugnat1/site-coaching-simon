@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coach sportif à domicile Strasbourg, Eurométropole et alentours</title>
-<meta name="description" content="Simon Hoffmann se déplace chez toi à Strasbourg, Schiltigheim, Illkirch, Lingolsheim, Ostwald et jusqu'à 20 km autour. Vérifie ta commune sur la carte.">
+<meta name="description" content="Simon Hoffmann se déplace chez vous à Strasbourg, Schiltigheim, Illkirch, Lingolsheim, Ostwald et jusqu'à 20 km autour. Vérifiez votre commune sur la carte.">
 <link rel="canonical" href="https://simonhoffmann.fr/zone">
 <meta name="theme-color" content="#2f6b57">
 <meta name="geo.region" content="FR-67">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Simon Hoffmann · Coach sportif à Strasbourg">
 <meta property="og:title" content="Coach sportif à domicile Strasbourg, Eurométropole et alentours">
-<meta property="og:description" content="Simon Hoffmann se déplace chez toi à Strasbourg, Schiltigheim, Illkirch, Lingolsheim, Ostwald et jusqu'à 20 km autour. Vérifie ta commune sur la carte.">
+<meta property="og:description" content="Simon Hoffmann se déplace chez vous à Strasbourg, Schiltigheim, Illkirch, Lingolsheim, Ostwald et jusqu'à 20 km autour. Vérifiez votre commune sur la carte.">
 <meta property="og:url" content="https://simonhoffmann.fr/zone">
 <meta property="og:image" content="https://simonhoffmann.fr/img/portrait.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -212,22 +212,22 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
 <section class="phero">
   <div class="wrap">
     <span class="eyebrow">Zone desservie</span>
-    <h1>Je me déplace <em>chez toi</em>, à Strasbourg et alentours</h1>
-    <p class="lead">Strasbourg, toute l'Eurométropole et jusqu'à environ 20 km autour. Tape ta commune pour vérifier.</p>
+    <h1>Je me déplace <em>chez vous</em>, à Strasbourg et alentours</h1>
+    <p class="lead">Strasbourg, toute l'Eurométropole et jusqu'à environ 20 km autour. Indiquez votre commune pour vérifier.</p>
   </div>
 </section>
 
 <section class="sec" style="padding-top:0">
   <div class="wrap zone">
     <div class="card checker">
-      <label for="commune" class="q">Ta commune</label>
+      <label for="commune" class="q">Votre commune</label>
       <div class="field">
         <input id="commune" list="communes" placeholder="Ex. : Illkirch, Brumath…" autocomplete="address-level2">
         <button type="button" class="btn sm" id="go">Vérifier</button>
       </div>
       <datalist id="communes"></datalist>
       <button type="button" class="geo" id="geo">Utiliser ma position</button>
-      <div class="result" id="result" aria-live="polite"><p>Tape le nom de ta commune ou clique sur la carte.</p></div>
+      <div class="result" id="result" aria-live="polite"><p>Indiquez votre commune ou cliquez sur la carte.</p></div>
     </div>
     <div class="card map-box">
       <div id="map" role="application" aria-label="Carte de la zone desservie autour de Strasbourg"></div>
@@ -241,7 +241,7 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
   <div class="wrap">
     <div class="sec-head">
       <h2>Communes <em>desservies</em></h2>
-      <p>Coach sportif à domicile à Strasbourg et dans les communes voisines. Ta commune n'est pas listée mais se trouve dans le cercle ? C'est bon.</p>
+      <p>Coach sportif à domicile à Strasbourg et dans les communes voisines. Votre commune n'est pas listée mais se trouve dans le cercle ? C'est bon.</p>
     </div>
     <div class="towns">
       <div class="card"><h3>Eurométropole de Strasbourg</h3><p id="t1"></p></div>
@@ -278,7 +278,7 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
         </ul>
       </div>
     </div>
-    <p class="legal">* Crédit d'impôt de 50 % au titre des services à la personne (art. 199 sexdecies du CGI), pour les séances réalisées à ton domicile, dans la limite des plafonds légaux. L'accompagnement à distance n'y ouvre pas droit.</p>
+    <p class="legal">* Crédit d'impôt de 50 % au titre des services à la personne (art. 199 sexdecies du CGI), pour les séances réalisées à votre domicile, dans la limite des plafonds légaux. L'accompagnement à distance n'y ouvre pas droit.</p>
     <p class="legal">© 2026 Simon Hoffmann · Coach sportif diplômé d'État à Strasbourg</p>
   </div>
 </footer>
@@ -336,9 +336,9 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
   var res=document.getElementById('result'),input=document.getElementById('commune');
   function verdict(nom,d){
     var cls,titre,txt;
-    if(d<=R1){cls='ok';titre='Je viens chez toi';txt='Tu es dans ma zone, on peut commencer quand tu veux.'}
-    else if(d<=R2){cls='mid';titre='Possible, parlons-en';txt='Tu es un peu au-delà de ma zone habituelle : appelle-moi, on regarde ensemble.'}
-    else{cls='ko';titre='Un peu trop loin';txt='Le suivi à distance peut être une bonne solution pour toi.'}
+    if(d<=R1){cls='ok';titre='Je viens chez vous';txt='Vous êtes dans ma zone, nous pouvons commencer quand vous voulez.'}
+    else if(d<=R2){cls='mid';titre='Possible, parlons-en';txt='Vous êtes un peu au-delà de ma zone habituelle : appelez-moi, nous regardons ensemble.'}
+    else{cls='ko';titre='Un peu trop loin';txt='Le suivi à distance peut être une bonne solution pour vous.'}
     res.className='result '+cls;
     res.innerHTML='<p class="small"></p><b></b><p></p><a class="link" href="contact.html">Me contacter</a>';
     res.querySelector('.small').textContent=nom+' · '+fmt(d)+' du centre de Strasbourg';
@@ -352,7 +352,7 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
     if(c){verdict(c[0],c.d);showOnMap(c[1],c[2],c[0])}
     else{
       res.className='result';
-      res.innerHTML='<p>Je ne connais pas encore cette commune. Clique sur la carte à l\'endroit où tu habites, ou <a class="link" href="contact.html">écris-moi</a>.</p>';
+      res.innerHTML='<p>Je ne connais pas encore cette commune. Cliquez sur la carte à l\'endroit où vous habitez, ou <a class="link" href="contact.html">écrivez-moi</a>.</p>';
     }
   }
   input.addEventListener('change',chercher);
@@ -366,7 +366,7 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
     navigator.geolocation.getCurrentPosition(function(p){
       geo.textContent='◎ Utiliser ma position';
       var la=p.coords.latitude,lo=p.coords.longitude;
-      verdict('Ta position',km(CENTRE[0],CENTRE[1],la,lo));showOnMap(la,lo,'Toi');
+      verdict('Votre position',km(CENTRE[0],CENTRE[1],la,lo));showOnMap(la,lo,'Vous');
     },function(){geo.textContent='◎ Position indisponible'},{timeout:10000});
   });
 

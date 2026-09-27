@@ -200,8 +200,8 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
 <section class="phero">
   <div class="wrap">
     <span class="eyebrow">Contact</span>
-    <h1>Parlons de <em>tes objectifs</em></h1>
-    <p class="lead">Le plus simple : appelle-moi. Tu peux aussi m'écrire ou remplir le formulaire, je te recontacte rapidement.</p>
+    <h1>Parlons de <em>vos objectifs</em></h1>
+    <p class="lead">Le plus simple : appelez-moi. Vous pouvez aussi m'écrire ou remplir le formulaire, je vous recontacte rapidement.</p>
   </div>
 </section>
 
@@ -222,20 +222,20 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
         <div class="f"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email"></div>
         <div class="f"><label for="commune">Commune <span aria-hidden="true">*</span></label><input id="commune" name="commune" autocomplete="address-level2" required></div>
       </div>
-      <div class="f"><label for="formule">Formule qui t'intéresse</label>
+      <div class="f"><label for="formule">Formule qui vous intéresse</label>
         <select id="formule" name="formule">
           <option value="">Je ne sais pas encore</option>
           <option value="seance">Séances à domicile (70 € / h)</option>
           <option value="hybride">Offre hybride (170 € / mois)</option>
           <option value="distance">Suivi à distance (140 € / mois)</option>
         </select></div>
-      <div class="f"><label for="message">Ton message</label>
-        <textarea id="message" name="message" rows="5" placeholder="Ton objectif, ton niveau, tes disponibilités…"></textarea></div>
+      <div class="f"><label for="message">Votre message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Votre objectif, votre niveau, vos disponibilités…"></textarea></div>
       <label class="consent"><input type="checkbox" id="rgpd"><span>J'accepte que Simon utilise ces informations pour me recontacter.</span></label>
       <p class="err" id="err" role="alert" hidden></p>
       <button type="submit" class="btn">Envoyer</button>
-      <p class="hint">Ton application e-mail s'ouvre avec le message prêt à partir.</p>
-      <p class="ok-msg" id="ok" hidden>Merci ! Si ton application e-mail ne s'est pas ouverte, appelle-moi au 06 71 00 53 00.</p>
+      <p class="hint">Votre application e-mail s'ouvre avec le message prêt à partir.</p>
+      <p class="ok-msg" id="ok" hidden>Merci ! Si votre application e-mail ne s'est pas ouverte, appelez-moi au 06 71 00 53 00.</p>
     </form>
   </div>
 </section>
@@ -267,7 +267,7 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
         </ul>
       </div>
     </div>
-    <p class="legal">* Crédit d'impôt de 50 % au titre des services à la personne (art. 199 sexdecies du CGI), pour les séances réalisées à ton domicile, dans la limite des plafonds légaux. L'accompagnement à distance n'y ouvre pas droit.</p>
+    <p class="legal">* Crédit d'impôt de 50 % au titre des services à la personne (art. 199 sexdecies du CGI), pour les séances réalisées à votre domicile, dans la limite des plafonds légaux. L'accompagnement à distance n'y ouvre pas droit.</p>
     <p class="legal">© 2026 Simon Hoffmann · Coach sportif diplômé d'État à Strasbourg</p>
   </div>
 </footer>
@@ -293,8 +293,8 @@ h1 em,h2 em{font-style:italic;color:var(--green)}
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
     var manque=[];
-    [['prenom','ton nom'],['tel','ton téléphone'],['commune','ta commune']].forEach(function(x){var el=$(x[0]),ko=!el.value.trim();el.setAttribute('aria-invalid',ko);if(ko)manque.push(x[1])});
-    if(!$('rgpd').checked)manque.push('ton accord pour être recontacté');
+    [['prenom','votre nom'],['tel','votre téléphone'],['commune','votre commune']].forEach(function(x){var el=$(x[0]),ko=!el.value.trim();el.setAttribute('aria-invalid',ko);if(ko)manque.push(x[1])});
+    if(!$('rgpd').checked)manque.push('votre accord pour être recontacté');
     if(manque.length){err.hidden=false;err.textContent='Il manque '+manque.join(', ')+'.';return}
     err.hidden=true;
     var d=new FormData(form);

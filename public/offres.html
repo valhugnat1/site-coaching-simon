@@ -228,7 +228,7 @@ td b{color:var(--green)}
   <div class="wrap">
     <span class="eyebrow">Tarifs</span>
     <h1>Des tarifs <em>clairs</em>, sans surprise</h1>
-    <p class="lead">Choisis la formule qui te ressemble. Les séances à domicile te coûtent moitié moins grâce au crédit d'impôt.</p>
+    <p class="lead">Choisissez la formule qui vous ressemble. Les séances à domicile vous coûtent moitié moins grâce au crédit d'impôt.</p>
   </div>
 </section>
 
@@ -241,8 +241,8 @@ td b{color:var(--green)}
         <p class="amount"><b>70 €</b> / heure</p>
         <p class="real">soit <b>35 €</b> après crédit d'impôt*</p>
         <ul>
-          <li>Séance individuelle d'1 h chez toi</li>
-          <li>Exercices adaptés à ton niveau</li>
+          <li>Séance individuelle d'1 h chez vous</li>
+          <li>Exercices adaptés à votre niveau</li>
           <li>Packs dégressifs, jusqu'à −15 %</li>
         </ul>
         <a href="#calculateur" class="btn">Calculer mon prix</a>
@@ -277,7 +277,7 @@ td b{color:var(--green)}
   <div class="wrap">
     <div class="sec-head">
       <h2>Les <em>packs</em> de séances</h2>
-      <p>Plus tu t'engages, moins tu paies. Prix pour des séances d'1 h à domicile.</p>
+      <p>Plus vous vous engagez, moins vous payez. Prix pour des séances d'1 h à domicile.</p>
     </div>
     <div class="card table-wrap">
       <table>
@@ -296,8 +296,8 @@ td b{color:var(--green)}
 <section class="sec" id="calculateur">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Calcule <em>ton prix</em></h2>
-      <p>Choisis combien de séances à domicile tu veux faire.</p>
+      <h2>Calculez <em>votre prix</em></h2>
+      <p>Choisissez le nombre de séances à domicile.</p>
     </div>
     <div class="calc">
       <div class="card calc-in">
@@ -316,7 +316,7 @@ td b{color:var(--green)}
         <p class="hint" id="hint"></p>
       </div>
       <div class="card calc-out" aria-live="polite">
-        <p class="out-label">Ce que tu paies vraiment</p>
+        <p class="out-label">Ce que vous payez vraiment</p>
         <p class="out-big" id="real">—</p>
         <p class="out-per" id="per">—</p>
         <dl>
@@ -331,7 +331,7 @@ td b{color:var(--green)}
 
 <section class="sec" style="padding-top:0">
   <div class="wrap">
-    <p class="fine">* Crédit d'impôt de 50 % pour les séances réalisées à ton domicile, même si tu n'es pas imposable. <a href="credit-impot.html" class="link">Comment ça marche</a></p>
+    <p class="fine">* Crédit d'impôt de 50 % pour les séances réalisées à votre domicile, même si vous n'êtes pas imposable. <a href="credit-impot.html" class="link">Comment ça marche</a></p>
   </div>
 </section>
 </main>
@@ -362,7 +362,7 @@ td b{color:var(--green)}
         </ul>
       </div>
     </div>
-    <p class="legal">* Crédit d'impôt de 50 % au titre des services à la personne (art. 199 sexdecies du CGI), pour les séances réalisées à ton domicile, dans la limite des plafonds légaux. L'accompagnement à distance n'y ouvre pas droit.</p>
+    <p class="legal">* Crédit d'impôt de 50 % au titre des services à la personne (art. 199 sexdecies du CGI), pour les séances réalisées à votre domicile, dans la limite des plafonds légaux. L'accompagnement à distance n'y ouvre pas droit.</p>
     <p class="legal">© 2026 Simon Hoffmann · Coach sportif diplômé d'État à Strasbourg</p>
   </div>
 </footer>
@@ -391,7 +391,7 @@ td b{color:var(--green)}
     $('real').textContent=eur(reel);
     $('per').textContent='soit '+eur(Math.round(reel/n*100)/100)+' la séance';
     var next=PACKS.slice().reverse().find(function(p){return p[0]>n});
-    $('hint').textContent=next?'Encore '+(next[0]-n)+' séance'+(next[0]-n>1?'s':'')+' pour passer à −'+next[1]*100+' %.':'Tu as la meilleure réduction (−15 %).';
+    $('hint').textContent=next?'Encore '+(next[0]-n)+' séance'+(next[0]-n>1?'s':'')+' pour passer à −'+next[1]*100+' %.':'Vous avez la meilleure réduction (−15 %).';
     document.querySelectorAll('.quick button').forEach(function(b){b.classList.toggle('on',+b.dataset.n===n)});
     $('cta').href='contact.html?formule=seance&seances='+n;
   }

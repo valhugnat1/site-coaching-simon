@@ -39,7 +39,7 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
 - Les couleurs sont des variables CSS dans `:root` en haut de chaque page : change-les là.
 - Les images vont dans `public/img/`, référencées en relatif (`img/nom.jpg`). Compresser avant d'ajouter (JPEG qualité ~85, < 300 Ko).
 - Le site doit rester **impeccable sur mobile (390 px de large)** : pas de scroll horizontal, gouttière de 16 px.
-- Langue : français, tutoiement, ton direct et motivant.
+- Langue : français, **vouvoiement** des clients, ton doux, rassurant et motivant.
 - Le témoignage de Martin est réel : **ne pas le modifier ni inventer d'autres témoignages**.
 - Les résultats avant/après (chiffres) sont réels : ne pas les changer sans qu'on te donne les nouveaux.
 - Après chaque modif : lancer `python3 scripts/check.py` et corriger les erreurs (❌). Les ⚠️ sont des rappels.
