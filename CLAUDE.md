@@ -13,7 +13,8 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
     - `resultats.html` : avant / après + témoignage de Martin
     - `zone.html` : carte Leaflet (OpenStreetMap) avec la zone desservie + vérificateur de commune
     - `contact.html` : formulaire (ouvre un e-mail pré-rempli, pas de serveur)
-  - `brut.html`, `editorial.html`, `pop.html`, `disco.html`, `calculateur.html` : anciennes versions, plus liées depuis le site (à supprimer)
+  - `menu.html` (URL `/menu`) : l'ancien sélecteur, qui liste toutes les versions (officielle + anciennes)
+  - `brut.html`, `editorial.html`, `pop.html` : anciennes versions pro ; `gay.html` (URL `/gay`, ex-`disco`) et `calculateur.html` : versions humoristiques. Accessibles seulement via `/menu`
   - `img/` : photos (portrait de Simon, avant/après de Simon, Martin, Théo)
   - `_headers` : en-têtes HTTP Cloudflare
 - `scripts/check.py` : mini-CI (liens, images, balises, placeholders)

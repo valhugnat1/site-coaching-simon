@@ -24,7 +24,7 @@ Cette branche expose directement le site « coaching à domicile » (plus de sé
 accueil, crédit d'impôt, offres + calculateur, avant/après, zone (carte), contact.
 
 Avant la mise en prod :
-1. Supprimer les anciennes versions (`brut`, `editorial`, `pop`, `disco`, `calculateur`)
+1. Les anciennes versions restent accessibles via `/menu` (`/gay` pour l'ex-Disco Gym)
 2. Retirer `<meta name="robots" content="noindex">` des 6 pages
 3. Remplacer les placeholders (prix provisoires, e-mail, téléphone, n° SAP)
 4. Merge dans `main` → en ligne en ~30 s
