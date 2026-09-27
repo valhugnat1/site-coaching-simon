@@ -42,6 +42,8 @@ for page in pages:
         warnings.append(f"{name}: e-mail placeholder contact@exemple.fr")
     if "XX XX XX XX" in html:
         warnings.append(f"{name}: téléphone placeholder")
+    if "[à compléter]" in html:
+        warnings.append(f"{name}: n° de déclaration SAP à compléter (obligatoire pour le crédit d'impôt)")
     if 'name="robots" content="noindex"' in html:
         warnings.append(f"{name}: noindex actif (normal en phase de test, à retirer à la mise en prod)")
 

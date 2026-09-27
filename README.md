@@ -18,13 +18,16 @@ python3 -m http.server 8000 --directory public   # puis http://localhost:8000
 python3 scripts/check.py                          # vérif liens / images / placeholders
 ```
 
-## Choisir la version finale
+## Version coaching à domicile
 
-1. `git mv public/editorial.html public/index.html` (remplace `editorial` par la version choisie ; supprime l'ancien `index.html` avant)
-2. Supprimer les autres versions, dont `disco.html` et `calculateur.html`
-3. Retirer `<meta name="robots" content="noindex">` de `index.html`
-4. Remplacer les placeholders (prix, e-mail, téléphone)
-5. Commit + push sur `main` → en ligne en ~30 s
+Cette branche expose directement le site « coaching à domicile » (plus de sélecteur de versions) :
+accueil, crédit d'impôt, offres + calculateur, avant/après, zone (carte), contact.
+
+Avant la mise en prod :
+1. Les anciennes versions restent accessibles via `/menu` (`/gay` pour l'ex-Disco Gym)
+2. Retirer `<meta name="robots" content="noindex">` des 6 pages
+3. Remplacer les placeholders (prix provisoires, e-mail, téléphone, n° SAP)
+4. Merge dans `main` → en ligne en ~30 s
 
 Voir `CLAUDE.md` pour les règles d'édition.
 # site-coaching-simon
