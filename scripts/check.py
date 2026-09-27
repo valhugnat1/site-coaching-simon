@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parent.parent / "public"
 errors, warnings = [], []
 
 pages = sorted(ROOT.glob("*.html"))
+# Pages du site officiel, indexées par Google : règles SEO strictes
+OFFICIELLES = {"index.html", "offres.html", "credit-impot.html", "resultats.html", "zone.html", "contact.html"}
 if not (ROOT / "index.html").exists():
     errors.append("public/index.html manquant : Cloudflare Pages n'aurait pas de page d'accueil.")
 
@@ -44,10 +46,24 @@ for page in pages:
         warnings.append(f"{name}: téléphone placeholder")
     if "[à compléter]" in html:
         warnings.append(f"{name}: n° de déclaration SAP à compléter (obligatoire pour le crédit d'impôt)")
-    if 'name="robots" content="noindex"' in html:
-        warnings.append(f"{name}: noindex actif (normal en phase de test, à retirer à la mise en prod)")
+    # 4. SEO des pages officielles
+    if name in OFFICIELLES:
+        if 'name="robots" content="noindex"' in html:
+            errors.append(f"{name}: noindex sur une page officielle, Google ne l'indexera pas")
+        if 'rel="canonical"' not in html:
+            errors.append(f"{name}: pas de <link rel=\"canonical\">")
+        if 'name="description"' not in html:
+            errors.append(f"{name}: pas de meta description")
+        if len(re.findall(r"<h1[ >]", html)) != 1:
+            errors.append(f"{name}: il faut exactement un <h1>")
+        m = re.search(r"<title>(.*?)</title>", html)
+        if m and len(m.group(1)) > 70:
+            warnings.append(f"{name}: <title> long ({len(m.group(1))} caractères, Google coupe vers 60-70)")
+        for img in re.findall(r"<img\b[^>]*>", html):
+            if 'alt="' not in img:
+                errors.append(f"{name}: image sans texte alternatif : {img[:60]}")
 
-# 4. Poids des images
+# 5. Poids des images
 for img in (ROOT / "img").glob("*"):
     kb = img.stat().st_size / 1024
     if kb > 500:
