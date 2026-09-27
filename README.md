@@ -27,3 +27,4 @@ python3 scripts/check.py                          # vérif liens / images / plac
 5. Commit + push sur `main` → en ligne en ~30 s
 
 Voir `CLAUDE.md` pour les règles d'édition.
+# site-coaching-simon
