@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact · Simon Hoffmann, coach sportif à Strasbourg</title>
-<meta name="description" content="Contacte Simon Hoffmann, coach sportif à domicile à Strasbourg : 06 71 00 53 00, simon.hoffmann5757@gmail.com, ou via le formulaire.">
+<meta name="description" content="Réservez votre première séance offerte avec Simon Hoffmann, coach sportif à domicile à Strasbourg : 06 71 00 53 00, simon.hoffmann5757@gmail.com, ou via le formulaire.">
 <link rel="canonical" href="https://simonhoffmann.fr/contact">
 <meta name="theme-color" content="#2f6b57">
 <meta name="geo.region" content="FR-67">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Simon Hoffmann · Coach sportif à Strasbourg">
 <meta property="og:title" content="Contact · Simon Hoffmann, coach sportif à Strasbourg">
-<meta property="og:description" content="Contacte Simon Hoffmann, coach sportif à domicile à Strasbourg : 06 71 00 53 00, simon.hoffmann5757@gmail.com, ou via le formulaire.">
+<meta property="og:description" content="Réservez votre première séance offerte avec Simon Hoffmann, coach sportif à domicile à Strasbourg : 06 71 00 53 00, simon.hoffmann5757@gmail.com, ou via le formulaire.">
 <meta property="og:url" content="https://simonhoffmann.fr/contact">
 <meta property="og:image" content="https://simonhoffmann.fr/img/portrait.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -180,6 +180,61 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 .plate .c1{background:#5f9a7f}.plate .c2{background:var(--honey)}.plate .c3{background:#c7b08c}.plate .c4{background:#8fc1d9}
 @media (max-width:760px){.gift{grid-template-columns:1fr;padding:30px 24px;gap:18px;text-align:left}.gift .btn{width:100%}}
 
+/* ——— Illustrations animées ——— */
+.illu{display:block;width:100%;height:auto;overflow:visible}
+.illu *{animation-play-state:paused}
+.illu.play *{animation-play-state:running}
+.duo{display:flex;justify-content:center;align-items:flex-end;gap:40px;margin:30px auto 0}
+.duo .illu{width:118px}
+.split{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.phero-illu{width:100%;max-width:340px;justify-self:center}
+.phero-illu .i-press,.phero-illu .i-squat{max-width:170px;margin:0 auto}
+/* poêle */
+.i-pan .pan{transform-box:view-box;transform-origin:20px 114px;animation:toss 2s ease-in-out infinite}
+@keyframes toss{0%,28%{transform:rotate(0)}40%{transform:rotate(-6deg)}54%,100%{transform:rotate(0)}}
+.i-pan .veg{transform-box:fill-box;transform-origin:center;animation:saute 2s infinite}
+@keyframes saute{0%,36%{transform:translate(0,0) rotate(0);animation-timing-function:cubic-bezier(.2,.7,.4,1)}62%{transform:translate(var(--dx),var(--h)) rotate(180deg);animation-timing-function:cubic-bezier(.6,0,.8,.4)}86%,100%{transform:translate(0,0) rotate(360deg)}}
+.i-pan .v1{--h:-46px;--dx:-6px}
+.i-pan .v2{--h:-62px;--dx:4px;animation-delay:.04s}
+.i-pan .v3{--h:-52px;--dx:8px;animation-delay:.08s}
+.i-pan .v4{--h:-70px;--dx:-4px;animation-delay:.02s}
+.i-pan .v5{--h:-42px;--dx:-10px;animation-delay:.1s}
+.i-pan .flame{transform-box:fill-box;transform-origin:50% 100%;animation:flamme .8s ease-in-out infinite alternate}
+@keyframes flamme{to{transform:scale(.86,.76)}}
+.i-pan .steam path{opacity:.5;animation:vapeur 2.4s ease-out infinite}
+.i-pan .st2{animation-delay:.8s}.i-pan .st3{animation-delay:1.6s}
+@keyframes vapeur{0%{opacity:0;transform:translateY(8px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-16px)}}
+/* voiture */
+.i-car{overflow:hidden}
+.i-car .car{animation:rouler 6s infinite}
+@keyframes rouler{0%{transform:translateX(-210px);opacity:1;animation-timing-function:cubic-bezier(.3,.6,.35,1)}50%,86%{transform:translateX(0);opacity:1}94%{transform:translateX(0);opacity:0}95%,100%{transform:translateX(-210px);opacity:0}}
+.i-car .wheel{transform-box:fill-box;transform-origin:center;animation:roues 6s infinite}
+@keyframes roues{0%{transform:rotate(-900deg);animation-timing-function:cubic-bezier(.3,.6,.35,1)}50%,100%{transform:rotate(0)}}
+.i-car .speed{opacity:0;animation:vitesse 6s infinite}
+@keyframes vitesse{0%,28%{opacity:1}46%,100%{opacity:0}}
+.i-car .pin{animation:epingle 6s infinite}
+@keyframes epingle{0%,50%{transform:translateY(-26px);opacity:0}58%{transform:translateY(3px);opacity:1}64%,86%{transform:translateY(0);opacity:1}94%,100%{transform:translateY(0);opacity:0}}
+/* argent rendu */
+.i-money .stamp{transform-box:fill-box;transform-origin:center;animation:tampon 4.5s infinite}
+@keyframes tampon{0%{transform:scale(1.7);opacity:0}9%{transform:scale(.94);opacity:1}13%,88%{transform:scale(1);opacity:1}96%,100%{transform:scale(1);opacity:0}}
+.i-money .coin{opacity:0;animation:piece 4.5s linear infinite}
+.i-money .c2{animation-delay:.22s}.i-money .c3{animation-delay:.44s}
+@keyframes piece{0%,16%{transform:translate(0,0) scale(.6);opacity:0}20%{transform:translate(8px,-18px) scale(1);opacity:1}32%{transform:translate(40px,-46px) scale(1)}44%{transform:translate(78px,-42px) scale(1)}54%{transform:translate(103px,-6px) scale(.9);opacity:1}58%,100%{transform:translate(107px,6px) scale(.6);opacity:0}}
+.i-money .wallet{transform-box:fill-box;transform-origin:50% 100%;animation:bourse 4.5s infinite}
+@keyframes bourse{0%,54%{transform:scale(1)}60%{transform:scale(1.07,.94)}67%{transform:scale(.98,1.03)}74%,100%{transform:scale(1)}}
+.i-money .gain{animation:gain 4.5s infinite}
+@keyframes gain{0%,60%{opacity:0;transform:translateY(10px)}68%,86%{opacity:1;transform:translateY(0)}94%,100%{opacity:0;transform:translateY(-8px)}}
+/* bloc-notes */
+.i-notes .chk{stroke-dasharray:1;stroke-dashoffset:0}
+.i-notes .k1{animation:k1 6s infinite}.i-notes .k2{animation:k2 6s infinite}.i-notes .k3{animation:k3 6s infinite}.i-notes .k4{animation:k4 6s infinite}
+@keyframes k1{0%,6%{stroke-dashoffset:1;opacity:1}14%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes k2{0%,26%{stroke-dashoffset:1;opacity:1}34%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes k3{0%,46%{stroke-dashoffset:1;opacity:1}54%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes k4{0%,66%{stroke-dashoffset:1;opacity:1}74%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+.i-notes .pencil{animation:crayon 6s ease-in-out infinite}
+@keyframes crayon{0%,6%{transform:translate(0,0)}10%{transform:translate(5px,-4px)}14%{transform:translate(0,0)}20%,26%{transform:translate(0,24px)}30%{transform:translate(5px,20px)}34%{transform:translate(0,24px)}40%,46%{transform:translate(0,48px)}50%{transform:translate(5px,44px)}54%{transform:translate(0,48px)}60%,66%{transform:translate(0,72px)}70%{transform:translate(5px,68px)}74%{transform:translate(0,72px)}86%{transform:translate(46px,30px)}100%{transform:translate(0,0)}}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.phero-illu{max-width:250px}.duo{gap:28px}.duo .illu{width:96px}}
+
 /* barre d'action mobile */
 .sticky-cta{display:none}
 @media (max-width:760px){
@@ -281,10 +336,29 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 
 <main>
 <section class="phero">
-  <div class="wrap">
+  <div class="wrap split">
+    <div>
     <span class="eyebrow">Contact</span>
     <h1>Réservez votre <em>séance offerte</em></h1>
     <p class="lead">La première séance est gratuite et sans engagement. Appelez-moi, écrivez-moi ou remplissez le formulaire : je vous recontacte rapidement.</p>
+    </div>
+    <div class="phero-illu"><svg class="illu i-press" viewBox="28 6 104 150" aria-hidden="true">
+  <ellipse cx="80" cy="146" rx="42" ry="5" fill="#e5efe9"/>
+  <g fill="none" stroke="#1f2b27" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 92 L70 140 L62 140"/><path d="M80 92 L90 140 L98 140"/>
+    <path d="M80 56 L60 66 L62 46"><animate attributeName="d" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="M80 56 L60 66 L62 46;M80 56 L62 42 L60 20;M80 56 L62 42 L60 20;M80 56 L60 66 L62 46"/></path>
+    <path d="M80 56 L100 66 L98 46"><animate attributeName="d" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="M80 56 L100 66 L98 46;M80 56 L98 42 L100 20;M80 56 L98 42 L100 20;M80 56 L100 66 L98 46"/></path>
+    <path d="M80 92 L80 52" stroke="#2f6b57" stroke-width="9"/>
+  </g>
+  <g><path d="M54 46 H70" stroke="#1f2b27" stroke-width="4" stroke-linecap="round"/><rect x="50" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><rect x="68" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><animateTransform attributeName="transform" type="translate" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="0 0;-2 -26;-2 -26;0 0"/></g>
+  <g><path d="M90 46 H106" stroke="#1f2b27" stroke-width="4" stroke-linecap="round"/><rect x="86" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><rect x="104" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><animateTransform attributeName="transform" type="translate" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="0 0;2 -26;2 -26;0 0"/></g>
+  <circle cx="80" cy="38" r="10" fill="#fff" stroke="#1f2b27" stroke-width="4"/>
+  <path d="M76.5 40 q3.5 3.5 7 0" fill="none" stroke="#1f2b27" stroke-width="2" stroke-linecap="round"/>
+  <g stroke="#e3aa4f" stroke-width="3" stroke-linecap="round" opacity="0">
+    <path d="M44 14 l-6 -4M46 24 l-8 0M116 14 l6 -4M114 24 l8 0"/>
+    <animate attributeName="opacity" dur="2.2s" begin="-0.6s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.38;0.48;0.62;1"/>
+  </g>
+</svg></div>
   </div>
 </section>
 
@@ -409,6 +483,21 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
   }
   // Compteurs visibles dès le chargement (haut de page)
   document.querySelectorAll('.hero [data-count]').forEach(compter);
+
+  // Illustrations : animées seulement quand elles sont à l'écran
+  var illus=[].slice.call(document.querySelectorAll('svg.illu'));
+  function jouer(svg,on){
+    svg.classList.toggle('play',on);
+    if(svg.pauseAnimations){on?svg.unpauseAnimations():svg.pauseAnimations()}
+  }
+  if(calme){
+    illus.forEach(function(s){if(s.pauseAnimations){s.pauseAnimations();s.setCurrentTime(0)}});
+  }else if('IntersectionObserver' in window){
+    var io2=new IntersectionObserver(function(ents){ents.forEach(function(e){jouer(e.target,e.isIntersecting)})});
+    illus.forEach(function(s){jouer(s,false);io2.observe(s)});
+  }else{
+    illus.forEach(function(s){jouer(s,true)});
+  }
 
   var nav=document.querySelector('.nav'),bar=document.querySelector('.sticky-cta');
   function scroll(){

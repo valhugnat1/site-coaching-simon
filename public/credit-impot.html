@@ -181,6 +181,61 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 .plate .c1{background:#5f9a7f}.plate .c2{background:var(--honey)}.plate .c3{background:#c7b08c}.plate .c4{background:#8fc1d9}
 @media (max-width:760px){.gift{grid-template-columns:1fr;padding:30px 24px;gap:18px;text-align:left}.gift .btn{width:100%}}
 
+/* ——— Illustrations animées ——— */
+.illu{display:block;width:100%;height:auto;overflow:visible}
+.illu *{animation-play-state:paused}
+.illu.play *{animation-play-state:running}
+.duo{display:flex;justify-content:center;align-items:flex-end;gap:40px;margin:30px auto 0}
+.duo .illu{width:118px}
+.split{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.phero-illu{width:100%;max-width:340px;justify-self:center}
+.phero-illu .i-press,.phero-illu .i-squat{max-width:170px;margin:0 auto}
+/* poêle */
+.i-pan .pan{transform-box:view-box;transform-origin:20px 114px;animation:toss 2s ease-in-out infinite}
+@keyframes toss{0%,28%{transform:rotate(0)}40%{transform:rotate(-6deg)}54%,100%{transform:rotate(0)}}
+.i-pan .veg{transform-box:fill-box;transform-origin:center;animation:saute 2s infinite}
+@keyframes saute{0%,36%{transform:translate(0,0) rotate(0);animation-timing-function:cubic-bezier(.2,.7,.4,1)}62%{transform:translate(var(--dx),var(--h)) rotate(180deg);animation-timing-function:cubic-bezier(.6,0,.8,.4)}86%,100%{transform:translate(0,0) rotate(360deg)}}
+.i-pan .v1{--h:-46px;--dx:-6px}
+.i-pan .v2{--h:-62px;--dx:4px;animation-delay:.04s}
+.i-pan .v3{--h:-52px;--dx:8px;animation-delay:.08s}
+.i-pan .v4{--h:-70px;--dx:-4px;animation-delay:.02s}
+.i-pan .v5{--h:-42px;--dx:-10px;animation-delay:.1s}
+.i-pan .flame{transform-box:fill-box;transform-origin:50% 100%;animation:flamme .8s ease-in-out infinite alternate}
+@keyframes flamme{to{transform:scale(.86,.76)}}
+.i-pan .steam path{opacity:.5;animation:vapeur 2.4s ease-out infinite}
+.i-pan .st2{animation-delay:.8s}.i-pan .st3{animation-delay:1.6s}
+@keyframes vapeur{0%{opacity:0;transform:translateY(8px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-16px)}}
+/* voiture */
+.i-car{overflow:hidden}
+.i-car .car{animation:rouler 6s infinite}
+@keyframes rouler{0%{transform:translateX(-210px);opacity:1;animation-timing-function:cubic-bezier(.3,.6,.35,1)}50%,86%{transform:translateX(0);opacity:1}94%{transform:translateX(0);opacity:0}95%,100%{transform:translateX(-210px);opacity:0}}
+.i-car .wheel{transform-box:fill-box;transform-origin:center;animation:roues 6s infinite}
+@keyframes roues{0%{transform:rotate(-900deg);animation-timing-function:cubic-bezier(.3,.6,.35,1)}50%,100%{transform:rotate(0)}}
+.i-car .speed{opacity:0;animation:vitesse 6s infinite}
+@keyframes vitesse{0%,28%{opacity:1}46%,100%{opacity:0}}
+.i-car .pin{animation:epingle 6s infinite}
+@keyframes epingle{0%,50%{transform:translateY(-26px);opacity:0}58%{transform:translateY(3px);opacity:1}64%,86%{transform:translateY(0);opacity:1}94%,100%{transform:translateY(0);opacity:0}}
+/* argent rendu */
+.i-money .stamp{transform-box:fill-box;transform-origin:center;animation:tampon 4.5s infinite}
+@keyframes tampon{0%{transform:scale(1.7);opacity:0}9%{transform:scale(.94);opacity:1}13%,88%{transform:scale(1);opacity:1}96%,100%{transform:scale(1);opacity:0}}
+.i-money .coin{opacity:0;animation:piece 4.5s linear infinite}
+.i-money .c2{animation-delay:.22s}.i-money .c3{animation-delay:.44s}
+@keyframes piece{0%,16%{transform:translate(0,0) scale(.6);opacity:0}20%{transform:translate(8px,-18px) scale(1);opacity:1}32%{transform:translate(40px,-46px) scale(1)}44%{transform:translate(78px,-42px) scale(1)}54%{transform:translate(103px,-6px) scale(.9);opacity:1}58%,100%{transform:translate(107px,6px) scale(.6);opacity:0}}
+.i-money .wallet{transform-box:fill-box;transform-origin:50% 100%;animation:bourse 4.5s infinite}
+@keyframes bourse{0%,54%{transform:scale(1)}60%{transform:scale(1.07,.94)}67%{transform:scale(.98,1.03)}74%,100%{transform:scale(1)}}
+.i-money .gain{animation:gain 4.5s infinite}
+@keyframes gain{0%,60%{opacity:0;transform:translateY(10px)}68%,86%{opacity:1;transform:translateY(0)}94%,100%{opacity:0;transform:translateY(-8px)}}
+/* bloc-notes */
+.i-notes .chk{stroke-dasharray:1;stroke-dashoffset:0}
+.i-notes .k1{animation:k1 6s infinite}.i-notes .k2{animation:k2 6s infinite}.i-notes .k3{animation:k3 6s infinite}.i-notes .k4{animation:k4 6s infinite}
+@keyframes k1{0%,6%{stroke-dashoffset:1;opacity:1}14%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes k2{0%,26%{stroke-dashoffset:1;opacity:1}34%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes k3{0%,46%{stroke-dashoffset:1;opacity:1}54%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes k4{0%,66%{stroke-dashoffset:1;opacity:1}74%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+.i-notes .pencil{animation:crayon 6s ease-in-out infinite}
+@keyframes crayon{0%,6%{transform:translate(0,0)}10%{transform:translate(5px,-4px)}14%{transform:translate(0,0)}20%,26%{transform:translate(0,24px)}30%{transform:translate(5px,20px)}34%{transform:translate(0,24px)}40%,46%{transform:translate(0,48px)}50%{transform:translate(5px,44px)}54%{transform:translate(0,48px)}60%,66%{transform:translate(0,72px)}70%{transform:translate(5px,68px)}74%{transform:translate(0,72px)}86%{transform:translate(46px,30px)}100%{transform:translate(0,0)}}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.phero-illu{max-width:250px}.duo{gap:28px}.duo .illu{width:96px}}
+
 /* barre d'action mobile */
 .sticky-cta{display:none}
 @media (max-width:760px){
@@ -284,10 +339,32 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 
 <main>
 <section class="phero">
-  <div class="wrap">
+  <div class="wrap split">
+    <div>
     <span class="eyebrow">Crédit d'impôt</span>
     <h1>Votre coaching à domicile <em>à moitié prix</em></h1>
     <p class="lead">Le coaching sportif à domicile est un service à la personne : l'État vous rembourse 50 % de ce que vous payez.</p>
+    </div>
+    <div class="phero-illu"><svg class="illu i-money" viewBox="0 0 260 160" aria-hidden="true">
+  <g transform="translate(20 20)">
+    <path d="M0 8 Q0 0 8 0 H78 Q86 0 86 8 V116 L79 110 L72 116 L65 110 L58 116 L51 110 L44 116 L37 110 L30 116 L23 110 L16 116 L9 110 L0 116 Z" fill="#fff" stroke="#1f2b27" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M14 18 H52M14 30 H64" stroke="#e6dfd3" stroke-width="5" stroke-linecap="round"/>
+    <text x="43" y="54" text-anchor="middle" font-size="10" fill="#66726c" font-family="Inter,sans-serif">1 séance</text>
+    <text x="43" y="80" text-anchor="middle" font-size="24" font-weight="600" fill="#1f2b27" font-family="Fraunces,Georgia,serif">70 €</text>
+    <g transform="translate(43 98) rotate(-10)"><g class="stamp">
+      <rect x="-30" y="-11" width="60" height="22" rx="4" fill="#fff" stroke="#2f6b57" stroke-width="2.5"/>
+      <text y="4.5" text-anchor="middle" font-size="12" font-weight="700" fill="#2f6b57" font-family="Inter,sans-serif">−50 %</text>
+    </g></g>
+  </g>
+  <g transform="translate(160 72)"><g class="wallet">
+    <rect x="12" y="-8" width="50" height="22" rx="3" fill="#e5efe9" stroke="#2f6b57" stroke-width="2"/>
+    <rect x="0" y="6" width="78" height="54" rx="9" fill="#2f6b57"/>
+    <rect x="52" y="24" width="30" height="18" rx="6" fill="#24574a"/>
+    <circle cx="63" cy="33" r="3.5" fill="#e3aa4f"/>
+  </g></g>
+  <g transform="translate(92 76)"><g class="coin c1"><circle r="10" fill="#e3aa4f" stroke="#b07a22" stroke-width="2"/><text y="4.5" text-anchor="middle" font-size="12" font-weight="700" fill="#8a5a12" font-family="Inter,sans-serif">€</text></g></g><g transform="translate(92 76)"><g class="coin c2"><circle r="10" fill="#e3aa4f" stroke="#b07a22" stroke-width="2"/><text y="4.5" text-anchor="middle" font-size="12" font-weight="700" fill="#8a5a12" font-family="Inter,sans-serif">€</text></g></g><g transform="translate(92 76)"><g class="coin c3"><circle r="10" fill="#e3aa4f" stroke="#b07a22" stroke-width="2"/><text y="4.5" text-anchor="middle" font-size="12" font-weight="700" fill="#8a5a12" font-family="Inter,sans-serif">€</text></g></g>
+  <text class="gain" x="199" y="54" text-anchor="middle" font-size="17" font-weight="700" fill="#2f6b57" font-family="Inter,sans-serif">+35 €</text>
+</svg></div>
   </div>
 </section>
 
@@ -449,6 +526,21 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
   }
   // Compteurs visibles dès le chargement (haut de page)
   document.querySelectorAll('.hero [data-count]').forEach(compter);
+
+  // Illustrations : animées seulement quand elles sont à l'écran
+  var illus=[].slice.call(document.querySelectorAll('svg.illu'));
+  function jouer(svg,on){
+    svg.classList.toggle('play',on);
+    if(svg.pauseAnimations){on?svg.unpauseAnimations():svg.pauseAnimations()}
+  }
+  if(calme){
+    illus.forEach(function(s){if(s.pauseAnimations){s.pauseAnimations();s.setCurrentTime(0)}});
+  }else if('IntersectionObserver' in window){
+    var io2=new IntersectionObserver(function(ents){ents.forEach(function(e){jouer(e.target,e.isIntersecting)})});
+    illus.forEach(function(s){jouer(s,false);io2.observe(s)});
+  }else{
+    illus.forEach(function(s){jouer(s,true)});
+  }
 
   var nav=document.querySelector('.nav'),bar=document.querySelector('.sticky-cta');
   function scroll(){
