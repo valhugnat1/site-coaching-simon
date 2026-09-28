@@ -184,11 +184,11 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 .illu{display:block;width:100%;height:auto;overflow:visible}
 .illu *{animation-play-state:paused}
 .illu.play *{animation-play-state:running}
-.duo{display:flex;justify-content:center;align-items:flex-end;gap:40px;margin:30px auto 0}
-.duo .illu{width:118px}
+.duo{display:flex;justify-content:center;align-items:flex-end;gap:28px;margin:30px auto 0}
+.duo .illu{width:190px}
 .split{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
 .phero-illu{width:100%;max-width:340px;justify-self:center}
-.phero-illu .i-press,.phero-illu .i-squat{max-width:170px;margin:0 auto}
+.phero-illu .i-press,.phero-illu .i-squat{max-width:260px;margin:0 auto}
 /* poêle */
 .i-pan .pan{transform-box:view-box;transform-origin:20px 114px;animation:toss 2s ease-in-out infinite}
 @keyframes toss{0%,28%{transform:rotate(0)}40%{transform:rotate(-6deg)}54%,100%{transform:rotate(0)}}
@@ -233,7 +233,7 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 @keyframes k4{0%,66%{stroke-dashoffset:1;opacity:1}74%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
 .i-notes .pencil{animation:crayon 6s ease-in-out infinite}
 @keyframes crayon{0%,6%{transform:translate(0,0)}10%{transform:translate(5px,-4px)}14%{transform:translate(0,0)}20%,26%{transform:translate(0,24px)}30%{transform:translate(5px,20px)}34%{transform:translate(0,24px)}40%,46%{transform:translate(0,48px)}50%{transform:translate(5px,44px)}54%{transform:translate(0,48px)}60%,66%{transform:translate(0,72px)}70%{transform:translate(5px,68px)}74%{transform:translate(0,72px)}86%{transform:translate(46px,30px)}100%{transform:translate(0,0)}}
-@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.phero-illu{max-width:250px}.duo{gap:28px}.duo .illu{width:96px}}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.phero-illu{max-width:250px}.duo{gap:14px}.duo .illu{width:150px}}
 
 /* barre d'action mobile */
 .sticky-cta{display:none}

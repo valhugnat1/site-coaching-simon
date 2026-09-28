@@ -184,11 +184,11 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 .illu{display:block;width:100%;height:auto;overflow:visible}
 .illu *{animation-play-state:paused}
 .illu.play *{animation-play-state:running}
-.duo{display:flex;justify-content:center;align-items:flex-end;gap:40px;margin:30px auto 0}
-.duo .illu{width:118px}
+.duo{display:flex;justify-content:center;align-items:flex-end;gap:28px;margin:30px auto 0}
+.duo .illu{width:190px}
 .split{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
 .phero-illu{width:100%;max-width:340px;justify-self:center}
-.phero-illu .i-press,.phero-illu .i-squat{max-width:170px;margin:0 auto}
+.phero-illu .i-press,.phero-illu .i-squat{max-width:260px;margin:0 auto}
 /* poêle */
 .i-pan .pan{transform-box:view-box;transform-origin:20px 114px;animation:toss 2s ease-in-out infinite}
 @keyframes toss{0%,28%{transform:rotate(0)}40%{transform:rotate(-6deg)}54%,100%{transform:rotate(0)}}
@@ -233,7 +233,7 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 @keyframes k4{0%,66%{stroke-dashoffset:1;opacity:1}74%,90%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
 .i-notes .pencil{animation:crayon 6s ease-in-out infinite}
 @keyframes crayon{0%,6%{transform:translate(0,0)}10%{transform:translate(5px,-4px)}14%{transform:translate(0,0)}20%,26%{transform:translate(0,24px)}30%{transform:translate(5px,20px)}34%{transform:translate(0,24px)}40%,46%{transform:translate(0,48px)}50%{transform:translate(5px,44px)}54%{transform:translate(0,48px)}60%,66%{transform:translate(0,72px)}70%{transform:translate(5px,68px)}74%{transform:translate(0,72px)}86%{transform:translate(46px,30px)}100%{transform:translate(0,0)}}
-@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.phero-illu{max-width:250px}.duo{gap:28px}.duo .illu{width:96px}}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.phero-illu{max-width:250px}.duo{gap:14px}.duo .illu{width:150px}}
 
 /* barre d'action mobile */
 .sticky-cta{display:none}
@@ -428,32 +428,44 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
     <div class="sec-head center rv">
       <h2>Le sport, <em>simplement</em></h2>
       <p>Pas besoin d'être sportif pour commencer. Il suffit d'un peu de place et d'une heure.</p>
-      <div class="duo"><svg class="illu i-squat" viewBox="58 8 104 150" aria-hidden="true">
-  <ellipse cx="102" cy="146" rx="42" ry="5" fill="#e5efe9"/>
-  <g fill="none" stroke="#1f2b27" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M100 88 L100 114 L100 140 L112 140"><animate attributeName="d" dur="2.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M100 88 L100 114 L100 140 L112 140;M91 113 L116 120 L100 140 L112 140;M91 113 L116 120 L100 140 L112 140;M100 88 L100 114 L100 140 L112 140"/></path>
-    <path d="M100 56 L103 84"><animate attributeName="d" dur="2.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M100 56 L103 84;M110 86 L140 84;M110 86 L140 84;M100 56 L103 84"/></path>
-    <path d="M100 88 L100 50" stroke="#2f6b57" stroke-width="9"><animate attributeName="d" dur="2.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M100 88 L100 50;M91 113 L113 82;M91 113 L113 82;M100 88 L100 50"/></path>
+      <div class="duo"><svg class="illu i-squat" viewBox="0 0 160 170" aria-hidden="true">
+  <circle cx="80" cy="92" r="64" fill="#e5efe9"/>
+  <rect x="24" y="149" width="112" height="7" rx="3.5" fill="#cfe0d6"/>
+  <path d="M80 147 H96" stroke="#e3aa4f" stroke-width="7" stroke-linecap="round"/>
+  <path d="M82 98 L82 122 L82 146" fill="none" stroke="#2a3833" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="2.8s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M82 98 L82 122 L82 146;M74 120 L100 128 L82 146;M74 120 L100 128 L82 146;M82 98 L82 122 L82 146"/></path>
+  <path d="M82 96 L82 66" fill="none" stroke="#2f6b57" stroke-width="20" stroke-linecap="round"><animate attributeName="d" dur="2.8s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M82 96 L82 66;M76 117 L89 91;M76 117 L89 91;M82 96 L82 66"/></path>
+  <g>
+    <circle cx="82" cy="44" r="11.5" fill="#4a3b33"/><circle cx="71" cy="38" r="5.5" fill="#4a3b33"/>
+    <circle cx="85.5" cy="47" r="10" fill="#f0c4a0"/>
+    <path d="M86 51 q3 2.5 6 -0.5" fill="none" stroke="#1f2b27" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="90" cy="45" r="1.3" fill="#1f2b27"/>
+    <animateTransform attributeName="transform" type="translate" dur="2.8s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="0 0;13.6 26.8;13.6 26.8;0 0"/>
   </g>
-  <g><circle cx="100" cy="36" r="10" fill="#fff" stroke="#1f2b27" stroke-width="4"/>
-    <path d="M101 39.5 q3 3 6.5 -0.5" fill="none" stroke="#1f2b27" stroke-width="2" stroke-linecap="round"/>
-    <animateTransform attributeName="transform" type="translate" dur="2.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="0 0;20 33;20 33;0 0"/></g>
-</svg><svg class="illu i-press" viewBox="28 6 104 150" aria-hidden="true">
-  <ellipse cx="80" cy="146" rx="42" ry="5" fill="#e5efe9"/>
-  <g fill="none" stroke="#1f2b27" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M80 92 L70 140 L62 140"/><path d="M80 92 L90 140 L98 140"/>
-    <path d="M80 56 L60 66 L62 46"><animate attributeName="d" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="M80 56 L60 66 L62 46;M80 56 L62 42 L60 20;M80 56 L62 42 L60 20;M80 56 L60 66 L62 46"/></path>
-    <path d="M80 56 L100 66 L98 46"><animate attributeName="d" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="M80 56 L100 66 L98 46;M80 56 L98 42 L100 20;M80 56 L98 42 L100 20;M80 56 L100 66 L98 46"/></path>
-    <path d="M80 92 L80 52" stroke="#2f6b57" stroke-width="9"/>
+  <path d="M84 68 L92 86 L98 78" fill="none" stroke="#f0c4a0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="2.8s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M84 68 L92 86 L98 78;M90 92 L100 110 L108 100;M90 92 L100 110 L108 100;M84 68 L92 86 L98 78"/></path>
+  <path d="M84 68 L88 77" fill="none" stroke="#2f6b57" stroke-width="9" stroke-linecap="round"><animate attributeName="d" dur="2.8s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M84 68 L88 77;M90 92 L95 101;M90 92 L95 101;M84 68 L88 77"/></path>
+  <g>
+    <path d="M95 80 q5 -9 10 0" fill="none" stroke="#b07a22" stroke-width="3"/>
+    <circle cx="100" cy="87" r="8.5" fill="#e3aa4f"/>
+    <circle cx="98" cy="78" r="3.8" fill="#f0c4a0"/>
+    <animateTransform attributeName="transform" type="translate" dur="2.8s" begin="0s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="0 0;10 22;10 22;0 0"/>
   </g>
-  <g><path d="M54 46 H70" stroke="#1f2b27" stroke-width="4" stroke-linecap="round"/><rect x="50" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><rect x="68" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><animateTransform attributeName="transform" type="translate" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="0 0;-2 -26;-2 -26;0 0"/></g>
-  <g><path d="M90 46 H106" stroke="#1f2b27" stroke-width="4" stroke-linecap="round"/><rect x="86" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><rect x="104" y="40" width="6" height="12" rx="2" fill="#2f6b57"/><animateTransform attributeName="transform" type="translate" dur="2.2s" begin="-0.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.4;0.6;1" keySplines=".5 0 .5 1;0 0 1 1;.5 0 .5 1" values="0 0;2 -26;2 -26;0 0"/></g>
-  <circle cx="80" cy="38" r="10" fill="#fff" stroke="#1f2b27" stroke-width="4"/>
-  <path d="M76.5 40 q3.5 3.5 7 0" fill="none" stroke="#1f2b27" stroke-width="2" stroke-linecap="round"/>
-  <g stroke="#e3aa4f" stroke-width="3" stroke-linecap="round" opacity="0">
-    <path d="M44 14 l-6 -4M46 24 l-8 0M116 14 l6 -4M114 24 l8 0"/>
-    <animate attributeName="opacity" dur="2.2s" begin="-0.6s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.38;0.48;0.62;1"/>
-  </g>
+</svg><svg class="illu i-press" viewBox="0 0 160 170" aria-hidden="true">
+  <circle cx="80" cy="92" r="64" fill="#fbf0dc"/>
+  <rect x="24" y="149" width="112" height="7" rx="3.5" fill="#efdcb8"/>
+  <path d="M71 114 L69 143M89 114 L91 143" stroke="#f0c4a0" stroke-width="8" stroke-linecap="round"/>
+  <path d="M62 147 H74M86 147 H98" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <path d="M65 98 H95 L97 118 H84 L80 108 L76 118 H63 Z" fill="#2a3833"/>
+  <path d="M66 64 L54 80 L58 62" fill="none" stroke="#f0c4a0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="2.4s" begin="-0.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M66 64 L54 80 L58 62;M66 64 L58 46 L56 26;M66 64 L58 46 L56 26;M66 64 L54 80 L58 62"/></path>
+  <path d="M94 64 L106 80 L102 62" fill="none" stroke="#f0c4a0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="d" dur="2.4s" begin="-0.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="M94 64 L106 80 L102 62;M94 64 L102 46 L104 26;M94 64 L102 46 L104 26;M94 64 L106 80 L102 62"/></path>
+  <rect x="76.5" y="50" width="7" height="12" fill="#f0c4a0"/>
+  <path d="M63 67 Q63 60 70 60 H90 Q97 60 97 67 L95 102 H65 Z" fill="#2f6b57"/>
+  <circle cx="80" cy="44" r="11" fill="#f0c4a0"/>
+  <path d="M68.5 43 Q69 31 80 31 Q91 31 91.5 43 Q87 37 80 37.5 Q73 37 68.5 43 Z" fill="#9aa3a0"/>
+  <path d="M70.5 47 Q80 61 89.5 47 Q86 53.5 80 53.5 Q74 53.5 70.5 47 Z" fill="#9aa3a0"/>
+  <path d="M76.5 48.5 q3.5 2.5 7 0" fill="none" stroke="#1f2b27" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="76" cy="43" r="1.3" fill="#1f2b27"/><circle cx="84" cy="43" r="1.3" fill="#1f2b27"/>
+  <g><path d="M49 62 H67" stroke="#1f2b27" stroke-width="3" stroke-linecap="round"/><rect x="45" y="56" width="6" height="12" rx="2" fill="#24574a"/><rect x="65" y="56" width="6" height="12" rx="2" fill="#24574a"/><circle cx="58" cy="62" r="3.8" fill="#f0c4a0"/><animateTransform attributeName="transform" type="translate" dur="2.4s" begin="-0.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="0 0;-2 -36;-2 -36;0 0"/></g>
+  <g><path d="M93 62 H111" stroke="#1f2b27" stroke-width="3" stroke-linecap="round"/><rect x="89" y="56" width="6" height="12" rx="2" fill="#24574a"/><rect x="109" y="56" width="6" height="12" rx="2" fill="#24574a"/><circle cx="102" cy="62" r="3.8" fill="#f0c4a0"/><animateTransform attributeName="transform" type="translate" dur="2.4s" begin="-0.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.42;0.58;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1" values="0 0;2 -36;2 -36;0 0"/></g>
 </svg></div>
     </div>
     <div class="feats">

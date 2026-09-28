@@ -37,7 +37,7 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
 - Apparition au scroll : tout élément avec la classe `rv` apparaît en fondu quand il entre à l'écran (script en bas de chaque page). Les grilles s'affichent en cascade.
 - `data-count="50" data-suffix=" %"` sur un élément : le chiffre défile de 0 à la valeur. Le texte HTML doit contenir la valeur finale.
 - Icônes au trait : `class="draw"` sur le `<svg>` et `pathLength="1"` sur chaque tracé pour qu'elles se dessinent.
-- Illustrations animées (SVG dans la page, classe `illu`) : 2 bonshommes sportifs (squat, haltères), poêle qui fait sauter des légumes, voiture qui arrive chez un client, argent rendu par le crédit d'impôt, bloc-notes de suivi des séances. Elles ne s'animent que lorsqu'elles sont à l'écran. Les CSS `.i-*` sont dans le `<style>` de chaque page.
+- Illustrations animées (SVG dans la page, classe `illu`) : 2 personnages sportifs en illustration à plat (femme en squat avec kettlebell, homme aux cheveux gris avec haltères), poêle qui fait sauter des légumes, voiture qui arrive chez un client, argent rendu par le crédit d'impôt, bloc-notes de suivi des séances. Elles ne s'animent que lorsqu'elles sont à l'écran. Les CSS `.i-*` sont dans le `<style>` de chaque page.
 - Rester minimaliste (fondus, flottements lents, respirations). Tout est coupé si l'utilisateur a demandé à réduire les animations (`prefers-reduced-motion`) : ne pas casser ça.
 - Crédit d'impôt : ne rien promettre de plus que la loi (50 %, séances à domicile uniquement, coach déclaré SAP, plafond 12 000 €). Le suivi à distance n'y ouvre **pas** droit.
 
