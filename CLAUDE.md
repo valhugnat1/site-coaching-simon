@@ -16,7 +16,7 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
     - `contact.html` : formulaire (ouvre un e-mail pré-rempli, pas de serveur)
   - `menu.html` (URL `/menu`) : l'ancien sélecteur, qui liste toutes les versions (officielle + anciennes)
   - `brut.html`, `editorial.html`, `pop.html` : anciennes versions pro ; `gay.html` (URL `/gay`, ex-`disco`) et `calculateur.html` : versions humoristiques. Accessibles seulement via `/menu`
-  - `img/` : photos. Avant/après du site officiel : `c1-*` (Claire), `c2-*` (Nathalie), `c3-*` (Thomas), visages masqués par un carré noir et fonds floutés. Les anciennes photos (Simon, Martin, Théo) ne servent plus qu'aux anciennes versions
+  - `img/` : photos. Avant/après du site officiel : `c1-*` (Claire), `c2-*` (Nathalie), `martin_profil_*` (Martin, vrai prénom, chiffres réels), visages masqués par un carré noir et fonds floutés. Les anciennes photos (Simon, Martin, Théo) ne servent plus qu'aux anciennes versions
   - `_headers` : en-têtes HTTP Cloudflare
   - `sitemap.xml`, `robots.txt`, `favicon.svg`, `404.html` : SEO et confort
 - `scripts/check.py` : mini-CI (liens, images, balises, placeholders)
@@ -53,7 +53,7 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
 - Langue : français, **vouvoiement** des clients, ton doux, rassurant et motivant.
 - Le témoignage de Martin est réel : **ne pas le modifier ni inventer d'autres témoignages**.
 - Les résultats avant/après (chiffres) sont réels : ne pas les changer sans qu'on te donne les nouveaux.
-- Claire, Nathalie et Thomas sont des **prénoms modifiés** (affiché sur le site). Aucun chiffre (kg, cm, durée) pour eux tant que Simon n'a pas donné les vrais : ne jamais en inventer.
+- Claire et Nathalie sont des **prénoms modifiés** (affiché sur le site). Aucun chiffre (kg, cm, durée) pour eux tant que Simon n'a pas donné les vrais : ne jamais en inventer.
 - Après chaque modif : lancer `python3 scripts/check.py` et corriger les erreurs (❌). Les ⚠️ sont des rappels.
 
 ## Coordonnées (réelles)
