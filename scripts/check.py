@@ -13,7 +13,7 @@ errors, warnings = [], []
 
 pages = sorted(ROOT.glob("*.html"))
 # Pages du site officiel, indexées par Google : règles SEO strictes
-OFFICIELLES = {"index.html", "offres.html", "credit-impot.html", "resultats.html", "zone.html", "contact.html"}
+OFFICIELLES = {"index.html", "offres.html", "nutrition.html", "credit-impot.html", "resultats.html", "zone.html", "contact.html"}
 if not (ROOT / "index.html").exists():
     errors.append("public/index.html manquant : Cloudflare Pages n'aurait pas de page d'accueil.")
 

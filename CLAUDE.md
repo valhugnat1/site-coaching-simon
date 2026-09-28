@@ -8,6 +8,7 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
 - `public/` : **tout ce qui est en ligne**. Cloudflare Pages publie ce dossier tel quel.
   - Site **coaching à domicile** (design doux : crème + vert sauge, titres Fraunces, cible adultes 35-65 ans) — un menu relie les pages :
     - `index.html` : accueil
+    - `nutrition.html` : l'accompagnement nutrition (principes, assiette repère animée, déroulé)
     - `credit-impot.html` : explication du crédit d'impôt 50 % (services à la personne)
     - `offres.html` : les 3 vraies offres (séance 70 €, hybride 170 €/mois, distance 140 €/mois), packs −5/−10/−15 %, calculateur
     - `resultats.html` : avant / après + témoignage de Martin
@@ -24,10 +25,19 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
 ## Règles pour modifier le site
 
 - Chaque page est **un seul fichier HTML autonome** : CSS dans `<style>`, JS dans `<script>`, en bas de page. Pas de fichier CSS/JS partagé.
-  Le menu, le pied de page et le CSS de base sont donc copiés dans chaque page : une modif de menu/couleur se fait dans **les 6 pages**.
+  Le menu, le pied de page et le CSS de base sont donc copiés dans chaque page : une modif de menu/couleur se fait dans **les 7 pages**.
 - Tarifs (réels, donnés par Simon) : cartes + tableau des packs + `PRIX`/`PACKS` du calculateur dans `offres.html`, aperçu dans `index.html`, liste déroulante de `contact.html`, et JSON-LD (`makesOffer`, `priceRange`) dans `index.html`.
 - Rayon de la zone : `R1` / `R2` dans `zone.html`.
 - Ton : doux, rassurant, lisible. Peu de texte, pas de majuscules criardes. Cible : adultes 35-65 ans, remise en forme.
+- **Première séance offerte** : c'est l'appel à l'action principal (bouton du menu, barre fixe en bas sur mobile, bandeaux). Les liens pointent vers `contact.html?formule=essai`.
+- Nutrition : conseils d'hygiène de vie, pas de régime ni de promesse médicale. Garder la mention « ne remplace pas un médecin ou un diététicien ».
+
+## Animations
+
+- Apparition au scroll : tout élément avec la classe `rv` apparaît en fondu quand il entre à l'écran (script en bas de chaque page). Les grilles s'affichent en cascade.
+- `data-count="50" data-suffix=" %"` sur un élément : le chiffre défile de 0 à la valeur. Le texte HTML doit contenir la valeur finale.
+- Icônes au trait : `class="draw"` sur le `<svg>` et `pathLength="1"` sur chaque tracé pour qu'elles se dessinent.
+- Rester minimaliste (fondus, flottements lents, respirations). Tout est coupé si l'utilisateur a demandé à réduire les animations (`prefers-reduced-motion`) : ne pas casser ça.
 - Crédit d'impôt : ne rien promettre de plus que la loi (50 %, séances à domicile uniquement, coach déclaré SAP, plafond 12 000 €). Le suivi à distance n'y ouvre **pas** droit.
 
 ## SEO (pages officielles)
