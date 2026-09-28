@@ -10,7 +10,7 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
     - `index.html` : accueil
     - `nutrition.html` : l'accompagnement nutrition (principes, assiette repère animée, déroulé)
     - `credit-impot.html` : explication du crédit d'impôt 50 % (services à la personne)
-    - `offres.html` : les 3 vraies offres (séance 70 €, hybride 170 €/mois, distance 140 €/mois), packs −5/−10/−15 %, calculateur
+    - `offres.html` : les 3 vraies offres (séance 60 €, hybride 170 €/mois, distance 140 €/mois), packs −5/−10/−15 %, calculateur
     - `resultats.html` : avant / après + témoignage de Martin
     - `zone.html` : carte Leaflet (OpenStreetMap) avec la zone desservie + vérificateur de commune
     - `contact.html` : formulaire (ouvre un e-mail pré-rempli, pas de serveur)
