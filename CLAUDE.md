@@ -13,7 +13,7 @@ Hébergé sur Cloudflare Pages, déployé automatiquement depuis ce repo GitHub.
     - `offres.html` : les 3 vraies offres (séance 60 €, hybride 170 €/mois, distance 140 €/mois), packs −5/−10/−15 %, calculateur
     - `resultats.html` : avant / après + témoignage de Martin
     - `zone.html` : carte Leaflet (OpenStreetMap) avec la zone desservie + vérificateur de commune
-    - `contact.html` : formulaire (ouvre un e-mail pré-rempli, pas de serveur)
+    - `contact.html` : formulaire envoyé directement à Simon via Web3Forms (clé dans le champ caché `access_key`, gérée sur web3forms.com avec l'e-mail de Simon)
   - `menu.html` (URL `/menu`) : l'ancien sélecteur, qui liste toutes les versions (officielle + anciennes)
   - `brut.html`, `editorial.html`, `pop.html` : anciennes versions pro ; `gay.html` (URL `/gay`, ex-`disco`) et `calculateur.html` : versions humoristiques. Accessibles seulement via `/menu`
   - `img/` : photos. Avant/après du site officiel : `c1-*` (Claire), `c2-*` (Nathalie), `martin_profil_*` (Martin, vrai prénom, chiffres réels), visages masqués par un carré noir et fonds floutés. Les anciennes photos (Simon, Martin, Théo) ne servent plus qu'aux anciennes versions

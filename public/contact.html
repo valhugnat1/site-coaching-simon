@@ -306,6 +306,9 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
 .err{background:#fdf1f0;color:#8c1d18;border-radius:12px;padding:12px 16px;font-size:15px;font-weight:600}
 .form .btn{justify-self:start;min-width:200px}
 .hint{font-size:14px;color:var(--mute);margin-top:-6px}
+.form [hidden]{display:none!important}
+.ok-msg a{color:var(--green-dark);font-weight:600}
+.btn:disabled{opacity:.7;cursor:wait;transform:none}
 .ok-msg{background:var(--green-soft);color:var(--green-dark);border-radius:12px;padding:14px 16px;font-size:15px}
 @media (max-width:900px){.contact{grid-template-columns:1fr}}
 @media (max-width:560px){.form{padding:24px 18px}.grid2{grid-template-columns:1fr}.form .btn{width:100%}}
@@ -372,11 +375,15 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
       <p class="zone-note">Je me déplace à Strasbourg et jusqu'à 20 km autour. <a href="zone.html" class="link">Voir la zone</a></p>
     </aside>
 
-    <form class="card form rv" id="form" novalidate>
+    <form class="card form rv" id="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
       <h2 class="h3">Votre demande</h2>
+      <input type="hidden" name="access_key" value="0e95568f-99d5-4135-adfc-7e3c3163dfd7">
+      <input type="hidden" name="from_name" value="Site simonhoffmann.fr">
+      <input type="hidden" name="subject" id="subject" value="Nouvelle demande depuis le site">
+      <input type="checkbox" name="botcheck" class="vh" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="grid2">
-        <div class="f"><label for="prenom">Prénom et nom <span aria-hidden="true">*</span></label><input id="prenom" name="prenom" autocomplete="name" required></div>
-        <div class="f"><label for="tel">Téléphone <span aria-hidden="true">*</span></label><input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required></div>
+        <div class="f"><label for="prenom">Prénom et nom <span aria-hidden="true">*</span></label><input id="prenom" name="name" autocomplete="name" required></div>
+        <div class="f"><label for="tel">Téléphone <span aria-hidden="true">*</span></label><input id="tel" name="telephone" type="tel" autocomplete="tel" inputmode="tel" required></div>
         <div class="f"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email"></div>
         <div class="f"><label for="commune">Commune <span aria-hidden="true">*</span></label><input id="commune" name="commune" autocomplete="address-level2" required></div>
       </div>
@@ -390,11 +397,11 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
         </select></div>
       <div class="f"><label for="message">Votre message</label>
         <textarea id="message" name="message" rows="5" placeholder="Votre objectif, votre niveau, vos disponibilités…"></textarea></div>
-      <label class="consent"><input type="checkbox" id="rgpd"><span>J'accepte que Simon utilise ces informations pour me recontacter.</span></label>
+      <label class="consent"><input type="checkbox" id="rgpd" name="accord" value="oui"><span>J'accepte que Simon utilise ces informations pour me recontacter.</span></label>
       <p class="err" id="err" role="alert" hidden></p>
-      <button type="submit" class="btn">Envoyer</button>
-      <p class="hint">Votre application e-mail s'ouvre avec le message prêt à partir.</p>
-      <p class="ok-msg" id="ok" hidden>Merci ! Si votre application e-mail ne s'est pas ouverte, appelez-moi au 06 71 00 53 00.</p>
+      <button type="submit" class="btn" id="send">Envoyer ma demande</button>
+      <p class="hint">Votre demande est envoyée directement à Simon, qui vous recontacte rapidement.</p>
+      <p class="ok-msg" id="ok" role="status" hidden></p>
     </form>
   </div>
 </section>
@@ -514,29 +521,47 @@ a.card:hover,.card.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px 
   window.addEventListener('scroll',scroll,{passive:true});
   scroll();
 })();
-// Formulaire : pas de serveur, on prépare un e-mail pré-rempli.
+// Formulaire : envoi direct à Simon via Web3Forms (https://web3forms.com).
+// La clé d'accès est dans le champ caché access_key du formulaire (elle peut être publique).
 (function(){
-  var DEST='simon.hoffmann5757@gmail.com';
   var NOMS={essai:'Première séance offerte',seance:'Séances à domicile',hybride:'Offre hybride',distance:'Suivi à distance'};
-  var form=document.getElementById('form'),err=document.getElementById('err'),$=function(id){return document.getElementById(id)};
+  var form=document.getElementById('form'),err=document.getElementById('err'),ok=document.getElementById('ok'),btn=document.getElementById('send');
+  var $=function(id){return document.getElementById(id)};
   var q=new URLSearchParams(location.search);
   if(q.get('commune'))$('commune').value=q.get('commune');
   if(NOMS[q.get('formule')])$('formule').value=q.get('formule');
   if(q.get('seances'))$('message').value='Je suis intéressé(e) par '+q.get('seances')+' séance(s) à domicile.';
+
+  function erreur(t){err.hidden=false;err.textContent=t}
+
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
     var manque=[];
     [['prenom','votre nom'],['tel','votre téléphone'],['commune','votre commune']].forEach(function(x){var el=$(x[0]),ko=!el.value.trim();el.setAttribute('aria-invalid',ko);if(ko)manque.push(x[1])});
     if(!$('rgpd').checked)manque.push('votre accord pour être recontacté');
-    if(manque.length){err.hidden=false;err.textContent='Il manque '+manque.join(', ')+'.';return}
+    if(manque.length){erreur('Il manque '+manque.join(', ')+'.');return}
     err.hidden=true;
+
     var d=new FormData(form);
-    var corps=['Bonjour Simon,','',
-      'Nom : '+d.get('prenom'),'Téléphone : '+d.get('tel'),'E-mail : '+(d.get('email')||'—'),'Commune : '+d.get('commune'),
-      'Formule : '+(NOMS[d.get('formule')]||'je ne sais pas encore')];
-    if(d.get('message').trim())corps.push('','Message :',d.get('message').trim());
-    location.href='mailto:'+DEST+'?subject='+encodeURIComponent('Séance offerte / coaching : demande de '+d.get('prenom'))+'&body='+encodeURIComponent(corps.join('\n'));
-    $('ok').hidden=false;
+    var formule=NOMS[d.get('formule')]||'Je ne sais pas encore';
+    d.set('formule',formule);
+    if(!d.get('message').trim())d.set('message','(pas de message)');
+    d.set('subject',(d.get('formule')==='Première séance offerte'?'Séance offerte':'Demande de coaching')+' : '+d.get('name')+' ('+d.get('commune')+')');
+    if(!d.get('email'))d.delete('email');
+
+    btn.disabled=true;btn.textContent='Envoi en cours…';
+    fetch(form.action,{method:'POST',headers:{Accept:'application/json'},body:d})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||!j.success)throw new Error(j.message||r.status);return j})})
+      .then(function(){
+        form.querySelectorAll('.f,.consent,.grid2,.hint,#send').forEach(function(el){el.hidden=true});
+        ok.hidden=false;
+        ok.innerHTML='<b>Merci, votre demande est bien envoyée !</b><br>Simon vous recontacte très vite pour fixer votre séance. Si c’est urgent : <a href="tel:+33671005300">06 71 00 53 00</a>.';
+        ok.focus&&ok.setAttribute('tabindex','-1');ok.focus();
+      })
+      .catch(function(){
+        btn.disabled=false;btn.textContent='Envoyer ma demande';
+        erreur("L'envoi n'a pas fonctionné. Réessayez, ou appelez Simon au 06 71 00 53 00.");
+      });
   });
 })();
 </script>
